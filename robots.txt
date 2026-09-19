@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://forgor.app/sitemap.xml
