@@ -55,5 +55,14 @@
     <span><a href="/" class="cap">Home</a> &nbsp;·&nbsp; <a href="mailto:hello@forgor.app" class="cap">hello@forgor.app</a></span>
   </footer>
 </div>
+<script>
+  // Static hosting has no routes, so /join/CODE lands here. Hand it to the join page
+  // with the code as a query parameter. Remove this once the site is behind a host
+  // that can rewrite /join/* itself.
+  (function () {
+    var m = location.pathname.match(/^\/join\/([A-Za-z0-9]{4,16})\/?$/);
+    if (m) location.replace('/join/?c=' + encodeURIComponent(m[1]));
+  })();
+</script>
 </body>
 </html>

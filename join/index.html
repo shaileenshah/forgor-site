@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Join a household — Forgor</title>
+<meta name="description" content="Someone shared their Forgor household with you — one list of the dates a household can't afford to forget.">
+<meta name="theme-color" content="#121212">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Forgor">
+<meta property="og:title" content="Join our household on Forgor">
+<meta property="og:description" content="One shared list of the dates we can't forget.">
+<meta property="og:image" content="https://forgor.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Join our household on Forgor">
+<meta name="twitter:description" content="One shared list of the dates we can't forget.">
+<meta name="twitter:image" content="https://forgor.app/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Manrope:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#121212; --ink:#EFE9DD; --muted:#8E8779;
+    --hairline:rgba(255,255,255,.11); --gold:#C6A664;
+    --display:"Playfair Display",Georgia,"Times New Roman",serif;
+    --text:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:560px;margin:0 auto;padding:34px 24px 90px}
+  .cap{font-weight:500;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+  a{color:var(--ink)}
+  .lockup{display:flex;align-items:center;gap:13px;text-decoration:none;color:inherit}
+  .mark{width:34px;height:34px;display:block;flex:none}
+  .wordmark{font-family:var(--display);font-size:35px;line-height:1;letter-spacing:-.005em}
+  .wordmark .r{font-style:italic;color:var(--gold)}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(32px,7vw,46px);line-height:1.12;margin:56px 0 0;text-wrap:balance}
+  p{margin:14px 0 0;color:var(--muted)}
+  .code{display:inline-block;margin-top:24px;padding:11px 18px;border:1px solid var(--hairline);border-radius:10px;
+        font-family:var(--text);font-size:19px;letter-spacing:.18em;color:var(--ink);background:rgba(255,255,255,.04)}
+  .go{display:inline-flex;align-items:center;justify-content:center;gap:9px;margin-top:30px;padding:15px 26px;
+      border-radius:999px;background:var(--gold);color:#121212;font-weight:500;font-size:15px;text-decoration:none}
+  .go:active{opacity:.85}
+  .steps{margin-top:40px;padding-top:26px;border-top:1px solid var(--hairline)}
+  footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:54px;padding-top:26px;border-top:1px solid var(--hairline)}
+  .hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="lockup" href="/">
+    <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="Forgor"><path d="M50 12 C 26 12, 14 29, 14 48 C 14 60, 20 68, 29 73 L 29 86 L 71 86 L 71 73 C 80 68, 86 60, 86 48 C 86 29, 74 12, 50 12 Z" fill="none" stroke="#C6A664" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.5" cy="48" r="8.5" fill="#C6A664"/><circle cx="62.5" cy="48" r="8.5" fill="#C6A664"/><path d="M50 58 L 45.5 67 L 54.5 67 Z" fill="#C6A664"/><path d="M41.5 86 L 41.5 77 M 50 86 L 50 77 M 58.5 86 L 58.5 77" fill="none" stroke="#C6A664" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="wordmark" aria-hidden="true">forgo<span class="r">r</span></span>
+  </a>
+
+  <div id="invite" class="hide">
+    <h1>You've been invited to a household.</h1>
+    <p>One shared list of the dates a household can't afford to forget — the renewals, the registrations, the birthdays. Open this on the iPhone that has Forgor installed.</p>
+    <div class="code" id="code">········</div>
+    <a class="go" id="open" href="#">Open in Forgor</a>
+    <div class="steps">
+      <p><span class="cap">If nothing happens</span></p>
+      <p>Forgor isn't on the App Store yet, so the link only opens on a phone that already has it. Once it's installed, open this link again — or type the code above into Settings → Household.</p>
+    </div>
+  </div>
+
+  <div id="nocode" class="hide">
+    <h1>This link is missing its code.</h1>
+    <p>Ask whoever invited you to send it again from Settings → Household. Invite links are good for 48 hours.</p>
+  </div>
+
+  <footer>
+    <span class="cap">Forgor</span>
+    <span><a href="/" class="cap">Home</a> &nbsp;·&nbsp; <a href="mailto:hello@forgor.app" class="cap">hello@forgor.app</a></span>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    // The code arrives one of two ways: /join/CODE once the site is behind a host that
+    // can rewrite (Vercel), or ?c=CODE from the 404 handler on static hosting.
+    var fromPath = (location.pathname.match(/\/join\/([A-Za-z0-9]{4,16})\/?$/) || [])[1];
+    var fromQuery = new URLSearchParams(location.search).get('c');
+    var code = (fromPath || fromQuery || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+    if (!code) {
+      document.getElementById('nocode').classList.remove('hide');
+      return;
+    }
+    document.getElementById('code').textContent = code;
+    document.getElementById('open').href = 'forgor://join/' + code;
+    document.getElementById('invite').classList.remove('hide');
+  })();
+</script>
+</body>
+</html>
