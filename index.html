@@ -95,7 +95,7 @@
 
   .cap{font-family:var(--text);font-weight:500;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
   .cap.gold{color:var(--gold)}
-  p{margin:14px 0 0;max-width:54ch;color:var(--muted)}
+  p{margin:14px 0 0;max-width:60ch;color:var(--muted);text-wrap:pretty}
   h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.4vw,42px);line-height:1.14;margin:12px 0 0;color:var(--ink);text-wrap:balance}
 
   /* masthead */
@@ -189,17 +189,21 @@
   .hero .meta{margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 
 
+  /* shared section header */
+  .sechead{display:grid;grid-template-columns:1fr;gap:0 64px;align-items:end}
+  .sechead h2{max-width:none}
+  @media (min-width:840px){.sechead{grid-template-columns:1.05fr .95fr}.sechead p{margin-top:0}}
   /* costs */
   .costs{padding-block:104px 0}
   .costs .intro{max-width:60ch}
   .cards{display:grid;grid-template-columns:1fr;gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:18px;overflow:hidden;margin-top:34px}
   @media (min-width:720px){.cards{grid-template-columns:1fr 1fr}}
-  .card{background:var(--ground);padding:26px 24px 28px}
+  .card{background:var(--ground);padding:22px 24px 24px}
   .card .kind{display:flex;align-items:center;gap:9px}
-  .card h3{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.6vw,26px);line-height:1.2;margin:12px 0 0;color:var(--ink);text-wrap:balance}
+  .card h3{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.6vw,26px);line-height:1.2;margin:12px 0 0;color:var(--ink);text-wrap:pretty}
   .card p{font-size:15px;margin-top:10px}
-  .card .cost{margin-top:16px;padding-top:14px;border-top:1px solid var(--hairline);font-family:var(--display);font-style:italic;color:var(--gold);font-size:16px;line-height:1.4}
-  .costs .after{margin-top:22px;font-size:15px}
+  .card .cost{margin-top:10px;font-family:var(--display);font-style:italic;color:var(--gold);font-size:16px;line-height:1.4}
+  .costs .after{margin-top:22px;font-size:15px;max-width:none}
 
   .story{display:grid;gap:6px;margin-top:34px;padding:22px 24px;border:1px solid rgba(198,166,100,.35);border-radius:18px;background:rgba(198,166,100,.05);text-decoration:none;color:inherit;transition:border-color .2s,background .2s}
   .story:hover{border-color:var(--gold);background:rgba(198,166,100,.09)}
@@ -254,15 +258,14 @@
   <header>
     <div class="masthead">
       <div class="lockup"><svg class="mark" viewBox="0 0 100 100" role="img" aria-label="Forgor"><path d="M50 12 C 26 12, 14 29, 14 48 C 14 60, 20 68, 29 73 L 29 86 L 71 86 L 71 73 C 80 68, 86 60, 86 48 C 86 29, 74 12, 50 12 Z" fill="none" stroke="#C6A664" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.5" cy="48" r="8.5" fill="#C6A664"/><circle cx="62.5" cy="48" r="8.5" fill="#C6A664"/><path d="M50 58 L 45.5 67 L 54.5 67 Z" fill="#C6A664"/><path d="M41.5 86 L 41.5 77 M 50 86 L 50 77 M 58.5 86 L 58.5 77" fill="none" stroke="#C6A664" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="wordmark">forgo<span class="r">r</span></span></div>
-      <span class="soon"><span class="dot"></span><span class="cap">Coming soon</span></span>
     </div>
   </header>
 
   <div class="row hero">
     <div class="copy">
-      <span class="cap gold">Birthdays · Home · Car · Documents · Health · Money</span>
+      <span class="cap gold">Car · Home · Documents · Money · Birthdays</span>
       <h1>You forgor.<br><em>We didn't.</em></h1>
-      <p>The registration that lapsed. The passport the airline wouldn't take. The free trial that renewed at the yearly price. The dates that cost you something when they slip, on one household list that nudges the right person early.</p>
+      <p>The dates that cost you something when they slip, on one household list that nudges the right person early.</p>
       <div class="meta">
         <span class="soon"><span class="dot"></span><span class="cap">Coming soon</span></span>
       </div>
@@ -271,50 +274,43 @@
   </div>
 
   <section class="costs" aria-labelledby="costs-h">
-    <div class="intro">
-      <span class="cap gold">Where dates actually slip</span>
-      <h2 id="costs-h">The notice got lost in the pile. <em style="font-style:italic;color:var(--gold)">The fee didn't.</em></h2>
-      <p>We read through a lot of stories from people who missed a date. Almost none of them were careless. The reminder they were counting on never came, or came into a pile on the counter. These are the ones that cost the most.</p>
+    <div class="sechead">
+      <div><span class="cap gold">Where dates actually slip</span>
+      <h2 id="costs-h">The notice got lost in the pile. <em style="font-style:italic;color:var(--gold)">The fee didn't.</em></h2></div>
+      <p>Almost nobody who missed one was careless. The reminder never came, or came into a pile on the counter.</p>
     </div>
     <div class="cards">
       <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--slate)"></span><span class="cap">Car</span></span>
         <h3>Found out at a traffic stop.</h3>
-        <p>The renewal notice went to an old address, or under the mail. The sticker ran out in March. You found out in June.</p>
         <div class="cost">A ticket, a late fee, sometimes a tow.</div>
       </article>
       <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--sage)"></span><span class="cap">Home</span></span>
         <h3>The homestead exemption nobody filed.</h3>
-        <p>In Texas you file it once, after you move in, and April 30 is the date that gets it onto this year's bill. New owners miss it all the time.</p>
-        <div class="cost">Hundreds of dollars a year in property tax, until someone notices.</div>
+        <div class="cost">Due April 30 in Texas. Miss it and you overpay property tax.</div>
       </article>
       <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--ochre)"></span><span class="cap">Documents</span></span>
-        <h3>The passport was fine, until the airline counted.</h3>
-        <p>Many countries want six months left on it, not one day. And a child's passport lasts five years, not ten.</p>
-        <div class="cost">Lost flights, an emergency appointment, a trip that starts late.</div>
+        <h3>The passport the airline wouldn't take.</h3>
+        <div class="cost">Many countries want six months left. Kids' passports last five years.</div>
       </article>
       <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--stone)"></span><span class="cap">Money</span></span>
         <h3>The free trial that wasn't.</h3>
-        <p>You meant to cancel on day six. The charge came on day eight, at the yearly price.</p>
-        <div class="cost">Real money, for something you stopped using a week in.</div>
+        <div class="cost">Cancel on day six, charged on day eight, at the yearly price.</div>
       </article>
       <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--sage)"></span><span class="cap">Home</span></span>
         <h3>The home insurance that lapsed quietly.</h3>
-        <p>The renewal went to an old email, the card on file had expired, and the policy simply ended.</p>
-        <div class="cost">No cover when you need it, and insurers who ask why before they take you back.</div>
+        <div class="cost">The card on file expired. So did the cover.</div>
       </article>
       <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--ochre)"></span><span class="cap">Documents</span></span>
         <h3>The green card, the work permit, the visa.</h3>
-        <p>Renewals that take months to process, and a date nobody else is watching for you.</p>
-        <div class="cost">A start date pushed back, a job offer on hold, one more filing.</div>
+        <div class="cost">Months to process, and nobody else is watching the date.</div>
       </article>
     </div>
-    <p class="after">And the quieter ones: the car inspection, the warranty that ran out a month before the fridge did, the birthday you'd hate to miss.</p>
     <a class="story" href="mailto:hello@forgor.app?subject=I%20forgor&amp;body=What%20slipped%3A%0AWhat%20it%20cost%3A%0AHow%20you%20keep%20track%20now%3A%0A" data-goatcounter-click="story-email" data-goatcounter-title="Tell us what you forgor">
       <span class="story-q">What did <em>you</em> forgor?</span>
       <span class="story-a">Tell us the date that got away and what it cost. We read every one, and it shapes what Forgor does next.</span>
@@ -326,9 +322,8 @@
     <div class="copy">
       <span class="cap gold">One shelf, not five apps</span>
       <h2>Everything that comes back around, in one place.</h2>
-      <p>Birthday apps do birthdays. Home apps do filters. Car apps do oil changes. Forgor holds all of it and answers the only question that matters: what's due this month?</p>
-      <p>Type it, take it from a contact, or forward the renewal notice — it lands on the same shelf either way. This month, next month, and then <em>Later</em>: the part of the year your head has already given up on.</p>
-      <div class="shelf">
+      <p>Birthday apps do birthdays. Car apps do oil changes. Forgor holds all of it and answers one question: what's due this month?</p>
+            <div class="shelf">
         <span class="chip"><span class="dot6" style="background:var(--rose)"></span>Anniversaries</span>
         <span class="chip"><span class="dot6" style="background:var(--sage)"></span>Home</span>
         <span class="chip"><span class="dot6" style="background:var(--slate)"></span>Car</span>
@@ -391,8 +386,8 @@
     <div class="copy">
       <span class="cap gold">The whole product, in one line</span>
       <h2>A nudge two weeks out, then silence.</h2>
-      <p>Forgor tells you once, early enough that you can still do something about it, and then gets out of the way. No badge on the icon, no daily digest, no second reminder about the first reminder.</p>
-      <p>You choose the hour it arrives, and how far ahead — two weeks unless you say otherwise; passports get two months, haircuts get three days. Everything else is already decided.</p>
+      <p>Once, early enough to do something about it. No badges, no daily digest, no reminder about the reminder.</p>
+      <p>Two weeks ahead by default. Passports get two months. You pick the hour.</p>
     </div>
     <div class="device">
       <div class="frame">
@@ -415,24 +410,27 @@
     </div>
   </div>
   <section class="why" aria-labelledby="why-h">
-    <span class="cap gold">Why this one</span>
-    <h2 id="why-h">Built from the complaints about the others.</h2>
+    <div class="sechead">
+      <div><span class="cap gold">Why this one</span>
+      <h2 id="why-h">Built from the complaints about the others.</h2></div>
+      <p>Each one answers a complaint we kept reading in other apps' one-star reviews.</p>
+    </div>
     <div class="points">
       <div class="point">
         <h3>Nudges that <em>arrive.</em></h3>
-        <p>The most common complaint we found about date apps is a reminder that never shows up. Forgor schedules each nudge on your phone the moment you save the date, at the hour you chose.</p>
+        <p>Each nudge is set on your phone the moment you save the date.</p>
       </div>
       <div class="point">
         <h3>Your dates survive a <em>new phone.</em></h3>
-        <p>Everything is kept with your account, so a new iPhone, a reinstall or an update doesn't cost you a single date.</p>
+        <p>Kept with your account, so a new iPhone or a reinstall loses nothing.</p>
       </div>
       <div class="point">
         <h3>No bank login. <em>Ever.</em></h3>
-        <p>Forgor never asks to connect a bank or a card. Type it, take it from a contact, point the camera at it, or forward the email.</p>
+        <p>Type it, scan it, take it from a contact or forward the email.</p>
       </div>
       <div class="point">
         <h3>One list for the <em>household.</em></h3>
-        <p>Invite whoever you share a life with. Each date nudges the person it belongs to, so the passport nudges whoever renews it and Mom's birthday nudges everyone.</p>
+        <p>Each date nudges the person it belongs to. Mom's birthday nudges everyone.</p>
       </div>
     </div>
   </section>
@@ -442,7 +440,7 @@
   <div class="wrap">
     <span class="cap">The part that isn't a to-do list</span>
     <h2 class="quote">Nothing is ever overdue.<br><span class="gold">We nudge. We don't nag.</span></h2>
-    <p>No checkboxes, no red badges, no pile of things you failed to do. A date that passes rolls forward to next year on its own. The only number that goes up is the one for dates you kept.</p>
+    <p>No checkboxes, no pile of things you failed to do. A date that passes rolls forward on its own.</p>
   </div>
 </div>
 
