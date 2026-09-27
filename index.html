@@ -213,6 +213,16 @@
   .story-to{margin-top:6px}
   @media (min-width:840px){.story{grid-template-columns:1fr auto;align-items:center;column-gap:40px}.story-q,.story-a{grid-column:1}.story-to{grid-column:2;grid-row:1 / span 2;margin-top:0}}
 
+  /* plan */
+  .plan{padding-block:104px 0}
+  .steps{display:grid;grid-template-columns:1fr;margin-top:34px;border-top:1px solid var(--hairline)}
+  @media (min-width:840px){.steps{grid-template-columns:repeat(3,1fr);gap:0 40px}}
+  .step{padding:24px 0 6px;border-bottom:1px solid var(--hairline)}
+  @media (min-width:840px){.step{border-bottom:0}}
+  .step .n{font-family:var(--display);font-style:italic;font-size:44px;line-height:1;color:var(--gold)}
+  .step h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.2;margin:14px 0 0;color:var(--ink)}
+  .step p{font-size:15px;margin-top:8px}
+
   /* why */
   .why{padding-block:104px 0}
   .points{display:grid;grid-template-columns:1fr;gap:34px 56px;margin-top:34px}
@@ -316,6 +326,19 @@
       <span class="story-a">Tell us the date that got away and what it cost. We read every one, and it shapes what Forgor does next.</span>
       <span class="cap gold story-to">hello@forgor.app &rarr;</span>
     </a>
+  </section>
+
+  <section class="plan" aria-labelledby="plan-h">
+    <div class="sechead">
+      <div><span class="cap gold">How it works</span>
+      <h2 id="plan-h">Three steps. <em style="font-style:italic;color:var(--gold)">Then nothing to remember.</em></h2></div>
+      <p>Set it up once on a Sunday afternoon. Forgor does the remembering from there.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Add your dates.</h3><p>Type them, point the camera at the document, take birthdays from contacts, or forward the renewal email.</p></div>
+      <div class="step"><span class="n">2</span><h3>Invite your household.</h3><p>Each date nudges the person it belongs to.</p></div>
+      <div class="step"><span class="n">3</span><h3>Get one nudge, early.</h3><p>Two weeks ahead by default. Then silence.</p></div>
+    </div>
   </section>
 
   <div class="row flip">
