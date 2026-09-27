@@ -201,6 +201,14 @@
   .card .cost{margin-top:16px;padding-top:14px;border-top:1px solid var(--hairline);font-family:var(--display);font-style:italic;color:var(--gold);font-size:16px;line-height:1.4}
   .costs .after{margin-top:22px;font-size:15px}
 
+  .story{display:grid;gap:6px;margin-top:34px;padding:22px 24px;border:1px solid rgba(198,166,100,.35);border-radius:18px;background:rgba(198,166,100,.05);text-decoration:none;color:inherit;transition:border-color .2s,background .2s}
+  .story:hover{border-color:var(--gold);background:rgba(198,166,100,.09)}
+  .story-q{font-family:var(--display);font-size:clamp(22px,2.6vw,26px);color:var(--ink)}
+  .story-q em{font-style:italic;color:var(--gold)}
+  .story-a{color:var(--muted);font-size:15px;max-width:60ch}
+  .story-to{margin-top:6px}
+  @media (min-width:840px){.story{grid-template-columns:1fr auto;align-items:center;column-gap:40px}.story-q,.story-a{grid-column:1}.story-to{grid-column:2;grid-row:1 / span 2;margin-top:0}}
+
   /* why */
   .why{padding-block:104px 0}
   .points{display:grid;grid-template-columns:1fr;gap:34px 56px;margin-top:34px}
@@ -276,6 +284,12 @@
         <div class="cost">A ticket, a late fee, sometimes a tow.</div>
       </article>
       <article class="card">
+        <span class="kind"><span class="dot6" style="background:var(--sage)"></span><span class="cap">Home</span></span>
+        <h3>The homestead exemption nobody filed.</h3>
+        <p>In Texas you file it once, after you move in, and April 30 is the date that gets it onto this year's bill. New owners miss it all the time.</p>
+        <div class="cost">Hundreds of dollars a year in property tax, until someone notices.</div>
+      </article>
+      <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--ochre)"></span><span class="cap">Documents</span></span>
         <h3>The passport was fine, until the airline counted.</h3>
         <p>Many countries want six months left on it, not one day. And a child's passport lasts five years, not ten.</p>
@@ -288,13 +302,24 @@
         <div class="cost">Real money, for something you stopped using a week in.</div>
       </article>
       <article class="card">
+        <span class="kind"><span class="dot6" style="background:var(--sage)"></span><span class="cap">Home</span></span>
+        <h3>The home insurance that lapsed quietly.</h3>
+        <p>The renewal went to an old email, the card on file had expired, and the policy simply ended.</p>
+        <div class="cost">No cover when you need it, and insurers who ask why before they take you back.</div>
+      </article>
+      <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--ochre)"></span><span class="cap">Documents</span></span>
         <h3>The green card, the work permit, the visa.</h3>
         <p>Renewals that take months to process, and a date nobody else is watching for you.</p>
         <div class="cost">A start date pushed back, a job offer on hold, one more filing.</div>
       </article>
     </div>
-    <p class="after">And the quieter ones: the home insurance renewal, the warranty that ran out a month before the fridge did, the birthday you'd hate to miss.</p>
+    <p class="after">And the quieter ones: the car inspection, the warranty that ran out a month before the fridge did, the birthday you'd hate to miss.</p>
+    <a class="story" href="mailto:hello@forgor.app?subject=I%20forgor&amp;body=What%20slipped%3A%0AWhat%20it%20cost%3A%0AHow%20you%20keep%20track%20now%3A%0A" data-goatcounter-click="story-email" data-goatcounter-title="Tell us what you forgor">
+      <span class="story-q">What did <em>you</em> forgor?</span>
+      <span class="story-a">Tell us the date that got away and what it cost. We read every one, and it shapes what Forgor does next.</span>
+      <span class="cap gold story-to">hello@forgor.app &rarr;</span>
+    </a>
   </section>
 
   <div class="row flip">
@@ -395,7 +420,7 @@
     <div class="points">
       <div class="point">
         <h3>Nudges that <em>arrive.</em></h3>
-        <p>The top complaint about date apps is a reminder that never shows up. Forgor schedules each nudge on your phone the moment you save the date, at the hour you chose.</p>
+        <p>The most common complaint we found about date apps is a reminder that never shows up. Forgor schedules each nudge on your phone the moment you save the date, at the hour you chose.</p>
       </div>
       <div class="point">
         <h3>Your dates survive a <em>new phone.</em></h3>
@@ -448,5 +473,6 @@
   })();
 </script>
 
+<script data-goatcounter="https://forgor.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
