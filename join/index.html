@@ -50,6 +50,7 @@
   .go:active{opacity:.85}
   .steps{margin-top:40px;padding-top:26px;border-top:1px solid var(--hairline)}
   footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:54px;padding-top:26px;border-top:1px solid var(--hairline)}
+  .go.ghost{background:transparent;color:var(--gold, #C6A664);border:1px solid currentColor;margin-top:6px}
   .hide{display:none}
 </style>
 </head>
@@ -66,8 +67,10 @@
     <div class="code" id="code">········</div>
     <a class="go" id="open" href="#">Open in Forgor</a>
     <div class="steps">
-      <p><span class="cap">If nothing happens</span></p>
-      <p>Forgor isn't on the App Store yet, so this link only opens on a phone that already has it. Once it's installed, open this link again on that phone — the link is what carries the invitation.</p>
+      <p><span class="cap">Don't have Forgor yet?</span></p>
+      <p id="nostore">Forgor isn't on the App Store yet, so this link only opens on a phone that already has it.</p>
+      <p><a class="go ghost hide" id="store" href="#">Get Forgor on the App Store</a></p>
+      <p>Once it's installed and you've signed up, open this link again on that phone — or go to <b>Settings → Household → Have an invite code?</b> and type the code above.</p>
     </div>
   </div>
 
@@ -83,7 +86,15 @@
 </div>
 
 <script>
+  // Paste the App Store link here on launch day; until then the button stays hidden.
+  var APP_STORE_URL = '';
+
   (function () {
+    if (APP_STORE_URL) {
+      var a = document.getElementById('store');
+      a.href = APP_STORE_URL; a.classList.remove('hide');
+      document.getElementById('nostore').classList.add('hide');
+    }
     // The code arrives one of two ways: /join/CODE once the site is behind a host that
     // can rewrite (Vercel), or ?c=CODE from the 404 handler on static hosting.
     var fromPath = (location.pathname.match(/\/join\/([A-Za-z0-9]{4,16})\/?$/) || [])[1];
