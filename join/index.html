@@ -64,7 +64,7 @@
 
   <div id="invite" class="hide">
     <h1>You've been invited to a household.</h1>
-    <p>One shared list of the dates a household can't afford to forget — the renewals, the registrations, the birthdays. Open this on the iPhone that has Forgor installed.</p>
+    <p>One shared list of the dates a household can't afford to forget — the renewals, the registrations, the birthdays. Open this on the phone that has Forgor installed.</p>
     <div class="code" id="code">········</div>
     <a class="go" id="open" href="#">Open in Forgor</a>
     <div class="steps">
@@ -88,12 +88,19 @@
 
 <script>
   var APP_STORE_URL = 'https://apps.apple.com/us/app/forgor/id6813771857';
+  // Paste the Google Play link here once the Android app is live.
+  var PLAY_STORE_URL = '';
+  var isAndroid = /Android/i.test(navigator.userAgent);
 
   (function () {
-    if (APP_STORE_URL) {
-      var a = document.getElementById('store');
-      a.href = APP_STORE_URL; a.classList.remove('hide');
+    var storeUrl = isAndroid ? PLAY_STORE_URL : APP_STORE_URL;
+    var a = document.getElementById('store');
+    if (storeUrl) {
+      a.href = storeUrl; a.classList.remove('hide');
+      if (isAndroid) a.textContent = 'Get Forgor on Google Play';
       document.getElementById('nostore').classList.add('hide');
+    } else if (isAndroid) {
+      document.getElementById('nostore').textContent = "Forgor for Android isn't on Google Play yet, so this link only opens on a phone that already has it.";
     }
     // The code arrives one of two ways: /join/CODE once the site is behind a host that
     // can rewrite (Vercel), or ?c=CODE from the 404 handler on static hosting.
@@ -106,7 +113,11 @@
       return;
     }
     document.getElementById('code').textContent = code;
-    document.getElementById('open').href = 'forgor://join/' + code;
+    // Android: an intent pinned to Forgor's package, so no other app that claims the
+    // forgor:// scheme can catch the code. iPhone: the scheme, as before.
+    document.getElementById('open').href = isAndroid
+      ? 'intent://join/' + code + '#Intent;scheme=forgor;package=app.forgor.android;end'
+      : 'forgor://join/' + code;
     document.getElementById('invite').classList.remove('hide');
   })();
 </script>

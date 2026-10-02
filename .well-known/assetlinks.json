@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls", "delegate_permission/common.get_login_creds"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.forgor.android",
+      "sha256_cert_fingerprints": ["REPLACE_WITH_PLAY_APP_SIGNING_SHA256", "3A:D6:B1:24:F6:24:6E:B0:0A:5E:DA:83:59:83:80:73:7C:43:3C:A4:89:A9:3F:41:EF:4C:22:9C:B7:A5:1B:E7"]
+    }
+  }
+]
