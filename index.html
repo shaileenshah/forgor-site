@@ -260,6 +260,14 @@
   a.soon.store:hover,a.soon.store:focus-visible{background:rgba(198,166,100,.12);border-color:var(--gold)}
   .soon + .note{display:block;margin:12px 0 0 17px;opacity:.6}
   .close .soon + .note{margin-left:0}
+  .store-dlg{border:1px solid var(--hairline);border-radius:22px;background:#181816;color:var(--ink);padding:30px 30px 26px;max-width:320px;width:calc(100% - 32px);text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .store-dlg::backdrop{background:rgba(0,0,0,.62);backdrop-filter:blur(4px)}
+  .store-dlg img{display:block;width:188px;height:188px;margin:18px auto 0;border-radius:10px}
+  .store-dlg h3{font-family:var(--display);font-weight:400;font-size:26px;line-height:1.15;margin:10px 0 0}
+  .store-dlg p{margin:12px auto 0;font-size:14px}
+  .store-dlg .row2{display:flex;justify-content:center;gap:18px;margin-top:20px}
+  .store-dlg a,.store-dlg button{font:inherit;font-size:13px;color:var(--gold);background:none;border:0;cursor:pointer;padding:4px;text-decoration:none}
+  .store-dlg button{color:var(--muted)}
 
   /* the sign-off lockup — the one place the name is allowed to be loud */
   .signoff{margin-top:96px;display:flex;align-items:center;justify-content:center;gap:clamp(14px,2.4vw,30px);
@@ -507,6 +515,26 @@
   })();
 </script>
 
+<dialog class="store-dlg" id="storeDlg" aria-labelledby="storeDlgH">
+  <span class="cap gold">iPhone app</span>
+  <h3 id="storeDlgH">Scan to get Forgor<br>on your iPhone.</h3>
+  <img src="/app-store-qr.svg" alt="QR code linking to Forgor on the App Store" width="188" height="188">
+  <p>Point your iPhone camera at the code. Forgor is free on the App Store.</p>
+  <div class="row2"><button type="button" id="storeDlgClose">Close</button></div>
+</dialog>
+<script>
+  (function () {
+    var ua = navigator.userAgent;
+    var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var dlg = document.getElementById('storeDlg');
+    if (isIOS || !dlg || !dlg.showModal) return;
+    document.querySelectorAll('a.soon.store').forEach(function (a) {
+      a.addEventListener('click', function (e) { e.preventDefault(); dlg.showModal(); });
+    });
+    document.getElementById('storeDlgClose').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  })();
+</script>
 <script data-goatcounter="https://forgor.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
