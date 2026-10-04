@@ -52,6 +52,7 @@ canvas{width:100%;max-width:380px;height:auto;border-radius:18px;border:1px soli
 .toast.on{opacity:1}
 </style>
 <style>.out{margin-top:22px;border-top:1px solid var(--hair);padding-top:22px;display:none}.out.on{display:block}.big{font-family:"Playfair Display",serif;font-size:40px;line-height:1.1;margin:6px 0 10px}.big em{color:var(--gold)}.ok{color:#9BB59A}.warn{color:#D9A85C}.bad{color:#D98C7A}.narrow{max-width:620px}</style>
+<style>.linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--gold);text-decoration:underline;cursor:pointer}</style>
 </head>
 <body>
 <div class="wrap">
@@ -80,7 +81,7 @@ let u='d';document.querySelectorAll('[data-u]').forEach(b=>b.onclick=()=>{u=b.da
 $('go').onclick=()=>{const s=parse($('start').value),n=parseInt($('len').value,10),o=$('out');if(!s||!n){o.className='out on';o.innerHTML='<p class=warn>Add the start date and length.</p>';return}
 const end=new Date(s);if(u==='d')end.setUTCDate(end.getUTCDate()+n);else{const d=end.getUTCDate();end.setUTCDate(1);end.setUTCMonth(end.getUTCMonth()+n);const last=new Date(Date.UTC(end.getUTCFullYear(),end.getUTCMonth()+1,0)).getUTCDate();end.setUTCDate(Math.min(d,last))}
 const cancel=new Date(end.getTime()-2*864e5);const today=new Date();today.setUTCHours(0,0,0,0);const left=Math.round((end-today)/864e5);
-o.className='out on';o.innerHTML=`<div class="cap">Result</div><div class="big">It bills <em>${fmt(end)}.</em></div><p class="lede" style="margin:0 0 10px">${left>0?left+' days from today.':left===0?'That’s today.':'That date has passed; check your statement.'}</p><p class="lede" style="margin:0">Decide by <b>${fmt(cancel)}</b> to be safe. Add it to Forgor and set the nudge for that morning.</p>${cancel>today?'<p style="margin:16px 0 0"><button class="btn ghost small" id="cal" type="button">Add the decide-by date to my calendar</button></p>':''}`;
+o.className='out on';o.innerHTML=`<div class="cap">Result</div><div class="big">It bills <em>${fmt(end)}.</em></div><p class="lede" style="margin:0 0 10px">${left>0?left+' days from today.':left===0?'That’s today.':'That date has passed; check your statement.'}</p><p class="lede" style="margin:0">Decide by <b>${fmt(cancel)}</b> to be safe. Add it to Forgor and set the nudge for that morning.</p><div style="margin:18px 0 0"><a class="btn gold" href="${window.forgorStoreUrl?forgorStoreUrl('trial'):'https://apps.apple.com/us/app/forgor/id6813771857'}" data-goatcounter-click="trial-result-app-store">Get nudged in Forgor</a><p class="fine" style="margin:10px 0 0">One nudge before this date, and every other date your household cares about.</p>${cancel>today?'<p class="fine" style="margin:6px 0 0">Not ready for an app? <button class="linkbtn" id="cal" type="button">Add just this date to my calendar instead</button></p>':''}</div>`;
 if($('cal'))$('cal').onclick=()=>forgorICS({date:cancel,title:'Keep or cancel the trial? (bills '+fmt(end)+')',desc:'Your trial bills '+fmt(end)+'. Decide today to be safe.\n\nForgor keeps every trial, renewal and membership on one list and nudges you before it bills: https://forgor.app/?c=ics',file:'trial-decide-by.ics',event:'trial'});
 if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'trial-result',event:true})};
 </script>
