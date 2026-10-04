@@ -3,8 +3,8 @@
    Channel comes from ?c= (or utm_source) on the URL, e.g. forgor.app/?c=ig -> ct=site-ig.
    PT = provider token from App Store Connect > Analytics > Campaigns; Apple only counts ct when pt is present. */
 (function () {
-  var PT = '';
-  var BASE = 'https://apps.apple.com/us/app/forgor/id6813771857';
+  var PT = '128934949';
+  var BASE = 'https://apps.apple.com/app/apple-store/id6813771857';
   function channel() {
     var c = '';
     try {
