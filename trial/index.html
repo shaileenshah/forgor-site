@@ -70,10 +70,9 @@ canvas{width:100%;max-width:380px;height:auto;border-radius:18px;border:1px soli
 <button class="btn gold" id="go" type="button" data-goatcounter-click="trial-calc">When does it bill?</button>
 <p class="fine">Most trials bill on the day they end; some bill a day early. Check the terms of yours. Nothing you enter leaves your browser.</p><div class="out" id="out"></div></div>
 <section class="cta"><div class="cap">Never forgor it again</div><h2>Companies count on you <em>forgetting.</em></h2><p>Add the date to Forgor once. One nudge before it bills. Then silence.</p>
-<a class="btn gold" id="store" href="https://forgor.app/" data-goatcounter-click="trial-app-store">Add it to Forgor</a></section>
+<a class="btn gold" id="store" href="https://apps.apple.com/us/app/forgor/id6813771857" data-store="trial" data-goatcounter-click="trial-app-store">Add it to Forgor</a></section>
 </div>
 <script>
-const APP_STORE_URL='https://apps.apple.com/us/app/forgor/id6813771857?ct=trial'; document.getElementById('store').href=APP_STORE_URL;
 const $=id=>document.getElementById(id);
 const fmt=d=>d.toLocaleDateString('en-US',{weekday:'short',month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
 const parse=v=>v?new Date(v+'T00:00:00Z'):null;
@@ -81,8 +80,11 @@ let u='d';document.querySelectorAll('[data-u]').forEach(b=>b.onclick=()=>{u=b.da
 $('go').onclick=()=>{const s=parse($('start').value),n=parseInt($('len').value,10),o=$('out');if(!s||!n){o.className='out on';o.innerHTML='<p class=warn>Add the start date and length.</p>';return}
 const end=new Date(s);if(u==='d')end.setUTCDate(end.getUTCDate()+n);else{const d=end.getUTCDate();end.setUTCDate(1);end.setUTCMonth(end.getUTCMonth()+n);const last=new Date(Date.UTC(end.getUTCFullYear(),end.getUTCMonth()+1,0)).getUTCDate();end.setUTCDate(Math.min(d,last))}
 const cancel=new Date(end.getTime()-2*864e5);const today=new Date();today.setUTCHours(0,0,0,0);const left=Math.round((end-today)/864e5);
-o.className='out on';o.innerHTML=`<div class="cap">Result</div><div class="big">It bills <em>${fmt(end)}.</em></div><p class="lede" style="margin:0 0 10px">${left>0?left+' days from today.':left===0?'That’s today.':'That date has passed; check your statement.'}</p><p class="lede" style="margin:0">Decide by <b>${fmt(cancel)}</b> to be safe. Add it to Forgor and set the nudge for that morning.</p>`;
+o.className='out on';o.innerHTML=`<div class="cap">Result</div><div class="big">It bills <em>${fmt(end)}.</em></div><p class="lede" style="margin:0 0 10px">${left>0?left+' days from today.':left===0?'That’s today.':'That date has passed; check your statement.'}</p><p class="lede" style="margin:0">Decide by <b>${fmt(cancel)}</b> to be safe. Add it to Forgor and set the nudge for that morning.</p>${cancel>today?'<p style="margin:16px 0 0"><button class="btn ghost small" id="cal" type="button">Add the decide-by date to my calendar</button></p>':''}`;
+if($('cal'))$('cal').onclick=()=>forgorICS({date:cancel,title:'Keep or cancel the trial? (bills '+fmt(end)+')',desc:'Your trial bills '+fmt(end)+'. Decide today to be safe.\n\nForgor keeps every trial, renewal and membership on one list and nudges you before it bills: https://forgor.app/?c=ics',file:'trial-decide-by.ics',event:'trial'});
 if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'trial-result',event:true})};
 </script>
+<script src="/js/store.js"></script>
+<script src="/js/ics.js"></script>
 <script data-goatcounter="https://forgor.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body></html>

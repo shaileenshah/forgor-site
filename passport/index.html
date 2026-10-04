@@ -70,10 +70,9 @@ canvas{width:100%;max-width:380px;height:auto;border-radius:18px;border:1px soli
 <button class="btn gold" id="go" type="button" data-goatcounter-click="passport-check">Check it</button>
 <p class="fine">Some countries require your passport to be valid at least 6 months beyond the dates of your trip; others ask for less. Always confirm your destination’s entry rules on travel.state.gov. Nothing you enter leaves your browser.</p><div class="out" id="out"></div></div>
 <section class="cta"><div class="cap">Never forgor it again</div><h2>Renew on <em>your</em> schedule.</h2><p>Add every passport in the house to Forgor. It nudges whoever it belongs to, months before it expires. Kids’ too.</p>
-<a class="btn gold" id="store" href="https://forgor.app/" data-goatcounter-click="passport-app-store">Add it to Forgor</a></section>
+<a class="btn gold" id="store" href="https://apps.apple.com/us/app/forgor/id6813771857" data-store="passport" data-goatcounter-click="passport-app-store">Add it to Forgor</a></section>
 </div>
 <script>
-const APP_STORE_URL='https://apps.apple.com/us/app/forgor/id6813771857?ct=passport'; document.getElementById('store').href=APP_STORE_URL;
 const $=id=>document.getElementById(id);
 const fmt=d=>d.toLocaleDateString('en-US',{weekday:'short',month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
 const parse=v=>v?new Date(v+'T00:00:00Z'):null;
@@ -85,8 +84,12 @@ else if(m<3){cls='bad';head='Under 3 months left <em>when you fly home.</em>';bo
 else if(m<6){cls='warn';head=Math.floor(m)+' months left. <em>Cutting it close.</em>';body='Plenty of countries want 6. Check your destination, and renew if you can.'}
 else{cls='ok';head='You’re fine <em>for this trip.</em>';body=Math.floor(m)+' months of validity left when you get home.'}
 const nudge=new Date(e.getTime()-61*864e5);
-o.className='out on';o.innerHTML=`<div class="cap ${cls}">Result</div><div class="big">${head}</div><p class="lede" style="margin:0 0 10px">${body}</p><p class="lede" style="margin:0">${kid?'Children’s passports last 5 years, not 10. ':''}Expires ${fmt(e)}. ${nudge<new Date()?'Forgor would have nudged you back on <b>'+fmt(nudge)+'</b>. Add it now so the next one doesn’t sneak up.':'Forgor would nudge you around <b>'+fmt(nudge)+'</b>, two months ahead by default, or as early as you set it. For a passport, set it earlier: renewals take time.'}</p>`;
+o.className='out on';o.innerHTML=`<div class="cap ${cls}">Result</div><div class="big">${head}</div><p class="lede" style="margin:0 0 10px">${body}</p><p class="lede" style="margin:0">${kid?'Children’s passports last 5 years, not 10. ':''}Expires ${fmt(e)}. ${nudge<new Date()?'Forgor would have nudged you back on <b>'+fmt(nudge)+'</b>. Add it now so the next one doesn’t sneak up.':'Forgor would nudge you around <b>'+fmt(nudge)+'</b>, two months ahead by default, or as early as you set it. For a passport, set it earlier: renewals take time.'}</p><p style="margin:16px 0 0"><button class="btn ghost small" id="cal" type="button">Add a renewal reminder to my calendar</button></p>`;
+const today=new Date();today.setUTCHours(0,0,0,0);const when=cls!=='ok'?new Date(today.getTime()+864e5):(nudge>today?nudge:new Date(today.getTime()+7*864e5));
+$('cal').onclick=()=>forgorICS({date:when,title:'Renew '+(kid?'child’s ':'')+'passport (expires '+fmt(e)+')',desc:'Passport expires '+fmt(e)+'. Renewals can take weeks, so start now.\n\nForgor nudges everyone in the house before their passport expires: https://forgor.app/?c=ics',file:'renew-passport.ics',event:'passport'});
 if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'passport-result-'+cls,event:true})};
 </script>
+<script src="/js/store.js"></script>
+<script src="/js/ics.js"></script>
 <script data-goatcounter="https://forgor.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body></html>

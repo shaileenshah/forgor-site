@@ -104,6 +104,7 @@ canvas{width:100%;max-width:380px;height:auto;border-radius:18px;border:1px soli
         <button class="chip" id="fmtPost" aria-pressed="false" type="button">Post 4:5</button>
       </div>
       <p class="fine">Nothing you type leaves your phone. The card is drawn right here in your browser.</p>
+      <p class="fine"><b style="color:var(--gold);font-weight:600">RIP of the week.</b> Post your card and tag @forgor.app or #forgorfuneral. Every Friday we feature our favorite (with credit, never your last name).</p>
     </div>
     <div class="preview"><canvas id="card" width="1080" height="1920" aria-label="Gravestone card preview"></canvas></div>
   </div>
@@ -112,15 +113,13 @@ canvas{width:100%;max-width:380px;height:auto;border-radius:18px;border:1px soli
     <div class="cap">Never bury another date</div>
     <h2>You forgor. <em>We didn’t.</em></h2>
     <p>Forgor keeps every date that costs you when it slips (renewals, passports, trials, birthdays) on one list your household shares. One nudge, two weeks early. Then nothing.</p>
-    <a class="btn gold" id="store" href="https://forgor.app/" data-goatcounter-click="rip-app-store">Get Forgor on the App Store</a>
+    <a class="btn gold" id="store" href="https://apps.apple.com/us/app/forgor/id6813771857" data-store="rip" data-goatcounter-click="rip-app-store">Get Forgor on the App Store</a>
   </section>
 </div>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
 // Set this to the App Store URL (with a campaign token, e.g. ...?ct=rip) before deploying.
-const APP_STORE_URL = 'https://apps.apple.com/us/app/forgor/id6813771857?ct=rip';
-document.getElementById('store').href = APP_STORE_URL;
 
 const PRESETS = [
   ['My passport','2016 – 2026','Died three weeks before Cancún.'],
@@ -232,7 +231,7 @@ $('download').onclick = async () => {
 };
 $('share').onclick = async () => {
   const file = new File([await blob()], fileName(), {type:'image/png'});
-  const text = 'RIP. Make yours at forgor.app/rip';
+  const text = 'RIP. Make yours at forgor.app/rip #forgorfuneral';
   if (navigator.canShare && navigator.canShare({files:[file]})) {
     try { await navigator.share({files:[file], text}); } catch(e) {}
   } else { $('download').click(); toast('Saved. Post it anywhere.'); }
@@ -241,6 +240,7 @@ document.fonts.ready.then(draw);
 Promise.all(['82px "Playfair Display"','italic 50px "Playfair Display"','500 28px Manrope'].map(f => document.fonts.load(f))).then(draw).catch(draw);
 draw();
 </script>
+<script src="/js/store.js"></script>
 <script data-goatcounter="https://forgor.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
