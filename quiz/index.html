@@ -81,6 +81,8 @@ canvas{width:100%;max-width:380px;height:auto;border-radius:18px;border:1px soli
 .cta p{color:#B9B2A4;line-height:1.6;max-width:520px;margin:0 auto 24px}
 .handoff{margin-top:6px;padding:18px;border:1px solid rgba(198,166,100,.35);border-radius:16px;background:rgba(198,166,100,.05)}
 .handoff p{margin:0 0 14px;color:#CFC8BA;line-height:1.55;font-size:15px}
+.grid-box{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px dashed var(--hair);border-radius:14px;padding:14px 16px;margin:0 0 18px}
+.grid-box pre{margin:0;font:500 15px/1.6 Manrope,system-ui,sans-serif;color:#CFC8BA;white-space:pre-wrap}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1d1b16;border:1px solid var(--gold);border-radius:12px;padding:10px 16px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.on{opacity:1}
 .related a{color:var(--gold)}
@@ -125,6 +127,10 @@ canvas{width:100%;max-width:380px;height:auto;border-radius:18px;border:1px soli
         <p class="score" id="score"></p>
         <p class="verdict" id="verdict"></p>
         <ul class="list" id="list"></ul>
+        <div class="grid-box">
+          <pre id="gridText" aria-label="Your result as text"></pre>
+          <button class="btn ghost small" id="copyText" type="button" data-goatcounter-click="quiz-copy">Copy result</button>
+        </div>
         <div class="row">
           <button class="btn gold" id="share" type="button" data-goatcounter-click="quiz-share">Share my result</button>
           <button class="btn ghost" id="challenge" type="button" data-goatcounter-click="quiz-challenge">Challenge someone</button>
@@ -265,6 +271,7 @@ function finish(){
   $('handoffText').textContent = missed
     ? `The ${missed} you weren’t sure of come back every year. Put them in Forgor once and get one nudge before each, every year. Share the list with your household.`
     : 'You clearly remember for the whole house. Forgor can take that job off you: one shared list, one nudge two weeks early, and nobody asks you anymore.';
+  $('gridText').textContent = gridText();
   ev('quiz-complete-' + r.tier.b.toLowerCase(), r.tier.a + ' ' + r.tier.b);
   draw();
 }
@@ -336,6 +343,15 @@ function draw(){
 function toast(t){ const el = $('toast'); el.textContent = t; el.classList.add('on'); setTimeout(() => el.classList.remove('on'), 2400); }
 function blob(){ return new Promise(res => canvas.toBlob(res, 'image/png')); }
 function fileName(){ return 'forgor-' + tally().tier.b.toLowerCase() + '.png'; }
+function gridText(){
+  const r = tally();
+  const row = answers.map(v => v===2 ? '✅' : v===1 ? '🟨' : v===0 ? '💀' : '⬜').join('');
+  return `How Forgor are you?\n${r.tier.a} ${r.tier.b} · ${r.exact}/${r.n}\n${row}\nforgor.app/quiz/?c=quiz-copy`;
+}
+$('copyText').onclick = async () => {
+  try { await navigator.clipboard.writeText(gridText()); toast('Copied. Paste it anywhere.'); }
+  catch(e) { toast('Select the text above to copy it.'); }
+};
 function challengeUrl(){ const r = tally(); return `https://forgor.app/quiz/?c=quiz-share&beat=${r.exact}-${r.n}`; }
 $('download').onclick = async () => {
   const url = URL.createObjectURL(await blob()); const a = document.createElement('a');
@@ -351,7 +367,8 @@ $('share').onclick = async () => {
 };
 $('challenge').onclick = async () => {
   const r = tally();
-  const text = `I remembered ${r.exact} of ${r.n} dates I should know without looking. Bet you can’t beat it.`;
+  const row = gridText().split('\n')[2];
+  const text = `I remembered ${r.exact} of ${r.n} dates I should know without looking. ${row} Bet you can’t beat it.`;
   const url = challengeUrl();
   if (navigator.share) { try { await navigator.share({text, url}); return; } catch(e) { return; } }
   try { await navigator.clipboard.writeText(text + ' ' + url); toast('Link copied. Send it to someone.'); }
