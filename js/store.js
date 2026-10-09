@@ -12,7 +12,7 @@
   var PPID = {
     passport: RENEWALS, trial: RENEWALS, registration: RENEWALS,
     homestead: HOMEOWNERS, 'new-to-texas': HOMEOWNERS, 'texas-homeowner-checklist': HOMEOWNERS,
-    rip: FAMILIES, quiz: FAMILIES
+    rip: FAMILIES, quiz: FAMILIES, birthdays: FAMILIES, 'household-dates-checklist': FAMILIES
   };
   /* Partner QR codes land on the homepage with ?c=<slug>: realtors and home services get the Homeowners page,
      schools, PTAs and family businesses get the Families page. */
