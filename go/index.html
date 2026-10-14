@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Forgor</title>
+<link rel="icon" href="/favicon.svg">
+<style>
+html,body{margin:0;background:#121212;color:#EFE9DD;font-family:-apple-system,system-ui,sans-serif}
+main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+a{color:#C6A664}
+.btn{display:inline-block;margin-top:18px;padding:12px 20px;border-radius:999px;background:#C6A664;color:#121212;text-decoration:none;font-weight:600}
+p{color:#B9B2A4;max-width:320px;line-height:1.5}
+</style>
+</head>
+<body>
+<main>
+  <img src="/favicon.svg" width="56" height="56" alt="">
+  <h1 style="font-weight:400;margin:16px 0 4px">Opening Forgor…</h1>
+  <p>If nothing happens, tap below.</p>
+  <a class="btn" id="store" data-store="site" href="https://apps.apple.com/app/apple-store/id6813771857">Get Forgor on the App Store</a>
+  <p style="margin-top:22px;font-size:14px"><a id="home" href="/">Or learn more at forgor.app</a></p>
+</main>
+<script src="/js/store.js"></script>
+<script>
+/* QR landing for partner cards: forgor.app/go/?c=<slug>.
+   iPhone/iPad -> App Store (store.js adds ct=site-<slug>, pt and the matching custom product page).
+   Everything else -> homepage, keeping ?c so the visit is still tagged. */
+(function () {
+  var q = location.search || '';
+  var c = '';
+  try { c = (new URLSearchParams(q).get('c') || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 16); } catch (e) {}
+  var ua = navigator.userAgent || '';
+  var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var dest = ios && window.forgorStoreUrl ? window.forgorStoreUrl('site') : '/' + (c ? '?c=' + encodeURIComponent(c) : '');
+  document.getElementById('home').href = '/' + (c ? '?c=' + encodeURIComponent(c) : '');
+  window.__forgorDest = dest;
+  /* Count the scan in GoatCounter before leaving (image ping, no cookies). */
+  try {
+    var img = new Image();
+    img.src = 'https://forgor.goatcounter.com/count?p=' + encodeURIComponent('/go/' + (c || 'none')) +
+      '&t=' + encodeURIComponent('QR ' + (ios ? 'iOS' : 'other')) + '&r=' + encodeURIComponent(document.referrer) +
+      '&rnd=' + Math.random().toString(36).slice(2);
+  } catch (e) {}
+  if (!/[?&]test=1/.test(q)) setTimeout(function () { location.replace(dest); }, 350);
+})();
+</script>
+</body>
+</html>
