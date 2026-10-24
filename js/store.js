@@ -45,4 +45,46 @@
     document.querySelectorAll('[data-store]').forEach(function (a) { a.href = window.forgorStoreUrl(a.getAttribute('data-store')); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply); else apply();
+
+  /* Android (Oct 24, 2026): the app is iPhone-only for now, so App Store buttons on Android show
+     a "coming soon" note instead of sending people to an Apple page that won't install. */
+  window.forgorIsAndroid = /Android/i.test(navigator.userAgent || '');
+  function androidNote() {
+    var box = document.getElementById('forgorAndroid');
+    if (!box) {
+      var css = document.createElement('style');
+      css.textContent = '#forgorAndroid{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.62)}' +
+        '#forgorAndroid>div{max-width:320px;width:100%;border:1px solid rgba(255,255,255,.11);border-radius:22px;background:#181816;color:#EFE9DD;padding:28px 26px 22px;text-align:center;font-family:Manrope,-apple-system,system-ui,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.6)}' +
+        '#forgorAndroid h3{font-family:"Playfair Display",Georgia,serif;font-weight:400;font-size:24px;line-height:1.2;margin:0}' +
+        '#forgorAndroid p{color:#B9B2A4;font-size:14px;line-height:1.5;margin:12px 0 0}' +
+        '#forgorAndroid a{display:inline-block;margin-top:18px;padding:11px 18px;border-radius:999px;background:#C6A664;color:#121212;text-decoration:none;font-weight:600;font-size:14px}' +
+        '#forgorAndroid button{display:block;margin:12px auto 0;background:none;border:0;color:#8E8779;font:inherit;font-size:13px;cursor:pointer;padding:6px}';
+      document.head.appendChild(css);
+      box = document.createElement('div');
+      box.id = 'forgorAndroid';
+      box.setAttribute('role', 'dialog');
+      box.setAttribute('aria-modal', 'true');
+      box.innerHTML = '<div><h3>Forgor for Android<br>is on the way.</h3>' +
+        '<p>Right now Forgor is iPhone only. The Android app is coming soon.</p>' +
+        '<a href="mailto:hello@forgor.app?subject=Tell%20me%20when%20Forgor%20is%20on%20Android">Email me when it\'s ready</a>' +
+        '<button type="button">Close</button></div>';
+      box.addEventListener('click', function (e) { if (e.target === box || e.target.tagName === 'BUTTON') box.style.display = 'none'; });
+      document.body.appendChild(box);
+      try {
+        var img = new Image();
+        img.src = 'https://forgor.goatcounter.com/count?p=' + encodeURIComponent('/android-tap') + '&t=Android%20tap&rnd=' + Math.random().toString(36).slice(2);
+      } catch (e) {}
+    }
+    box.style.display = 'flex';
+  }
+  window.forgorAndroidNote = androidNote;
+  if (window.forgorIsAndroid) {
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest && e.target.closest('[data-store], a[href*="apps.apple.com"]');
+      if (!a) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      androidNote();
+    }, true);
+  }
 })();

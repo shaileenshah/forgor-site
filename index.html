@@ -534,7 +534,7 @@
     var ua = navigator.userAgent;
     var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     var dlg = document.getElementById('storeDlg');
-    if (isIOS || !dlg || !dlg.showModal) return;
+    if (isIOS || /Android/i.test(ua) || !dlg || !dlg.showModal) return;
     document.querySelectorAll('a.soon.store').forEach(function (a) {
       a.addEventListener('click', function (e) { e.preventDefault(); dlg.showModal(); });
     });

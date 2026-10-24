@@ -26,7 +26,7 @@ p{color:#B9B2A4;max-width:320px;line-height:1.5}
 <script>
 /* QR landing for partner cards: forgor.app/go/?c=<slug>.
    iPhone/iPad -> App Store (store.js adds ct=site-<slug>, pt and the matching custom product page).
-   Everything else -> homepage, keeping ?c so the visit is still tagged. */
+   Everything else (Android etc.) -> homepage, keeping ?c so the visit is still tagged. */
 (function () {
   var q = location.search || '';
   var c = '';
@@ -35,6 +35,15 @@ p{color:#B9B2A4;max-width:320px;line-height:1.5}
   var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   var dest = ios && window.forgorStoreUrl ? window.forgorStoreUrl('site') : '/' + (c ? '?c=' + encodeURIComponent(c) : '');
   document.getElementById('home').href = '/' + (c ? '?c=' + encodeURIComponent(c) : '');
+  if (!ios) {
+    /* Not an iPhone (e.g. Android, where the app isn't out yet): go to the website, no App Store button. */
+    document.querySelector('h1').textContent = 'Opening forgor.app…';
+    var sb = document.getElementById('store');
+    sb.textContent = 'Go to forgor.app';
+    sb.removeAttribute('data-store');
+    sb.href = dest;
+    document.getElementById('home').parentNode.style.display = 'none';
+  }
   window.__forgorDest = dest;
   /* Count the scan in GoatCounter before leaving (image ping, no cookies). */
   try {
