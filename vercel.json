@@ -5,6 +5,10 @@
     {
       "source": "/join/:code",
       "destination": "/join/index.html"
+    },
+    {
+      "source": "/calendar/google",
+      "destination": "https://dnizwlgxoyjkfwkoydth.supabase.co/functions/v1/calendar-connect/callback"
     }
   ],
   "headers": [
