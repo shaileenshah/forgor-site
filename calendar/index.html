@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-itunes-app" content="app-id=6813771857">
+<title>Import birthdays and renewals from your calendar | Forgor</title>
+<meta name="description" content="Forgor reads the calendars on your iPhone (iCloud, Google, Outlook), finds the birthdays, renewals and appointments worth a reminder, and never changes your calendar.">
+<link rel="canonical" href="https://forgor.app/calendar/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#121212"><meta name="color-scheme" content="dark">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Forgor"><meta property="og:url" content="https://forgor.app/calendar/">
+<meta property="og:title" content="Import birthdays and renewals from your calendar | Forgor"><meta property="og:description" content="Forgor reads the calendars on your iPhone (iCloud, Google, Outlook), finds the birthdays, renewals and appointments worth a reminder, and never changes your calendar.">
+<meta property="og:image" content="https://forgor.app/og-v2.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Manrope:wght@400;500;600&display=swap">
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+   {
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Forgor",
+    "item": "https://forgor.app/"
+   },
+   {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Calendar",
+    "item": "https://forgor.app/calendar/"
+   }
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Can Forgor import birthdays from my calendar?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Switch on the calendars that hold birthdays and Forgor suggests each one, repeating every year, with a nudge ahead of time."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does it work with Google Calendar and Outlook?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes, through your iPhone. If your Google or Outlook account is added to the iPhone's Calendar app, Forgor reads those calendars on the phone, the same way it reads iCloud."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I bring in my Outlook calendar?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "A personal Outlook account (outlook.com, hotmail.com, live.com or msn.com) works through your iPhone calendars. 1. On your iPhone, add the account under Settings → Apps → Calendar → Calendar Accounts, with Calendars turned on. 2. In Forgor, open Sources → iPhone calendars; your Outlook calendars show under an Outlook heading, with the email address beside it. 3. Switch on the ones you want and tap Turn on."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Will Forgor change or delete my events?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Access is read-only."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What is sent off my phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Only if you agree: the titles, dates and times of events in the calendars you switched on go to an AI model (Anthropic's Claude), only to pick out the dates worth a reminder. They are not used to train a model."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens when I add a new event later?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Forgor checks again when you open the app or pull down to refresh, and suggests anything new. If an event you kept moves or is cancelled, you'll see a card."
+    }
+   }
+  ]
+ }
+]
+</script>
+<style>
+:root{--ground:#121212;--raise:#181818;--ink:#EFE9DD;--muted:#8E8779;--soft:#A39C8E;--hairline:rgba(255,255,255,.11);--gold:#C6A664;--rose:#D39A95;--sage:#9BBFA4;--slate:#9AB4CF;--ochre:#D9BE7E;--mauve:#BBA6CF;--stone:#C9B8A6;--display:"Playfair Display",Georgia,"Times New Roman",serif;--text:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html{overflow-x:hidden;overflow-x:clip}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gold)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1060px;margin:0 auto;padding-inline:24px}
+.cap{font-weight:500;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.cap.gold{color:var(--gold)}
+p{margin:14px 0 0;max-width:60ch;color:var(--soft);text-wrap:pretty}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,6vw,64px);line-height:1.06;letter-spacing:-.01em;margin:18px 0 0;max-width:18ch;text-wrap:balance}
+h1 em,h2 em{font-style:italic;color:var(--gold)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.4vw,42px);line-height:1.14;margin:12px 0 0;text-wrap:balance}
+h3{font-family:var(--display);font-weight:400;font-size:23px;line-height:1.2;margin:12px 0 0}
+header{padding-block:34px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.lockup{display:flex;align-items:center;gap:13px;color:var(--ink);text-decoration:none}
+.mark{width:37px;height:37px;display:block;flex:none}
+.wordmark{font-family:var(--display);font-size:39px;line-height:1}
+.wordmark .r{font-style:italic;color:var(--gold)}
+.nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.nav a{color:var(--ink);text-decoration:none;font-size:14px;padding:12px;border-radius:999px}
+.nav a:hover{color:var(--gold)}
+.nav a.dl{background:var(--gold);color:#121212;font-weight:600;padding:10px 18px;margin-left:6px}
+.nav a.dl:hover{background:#d4b778}
+@media (max-width:420px){.nav a:not(.dl){padding:12px 8px}.wordmark{font-size:32px}}
+.crumb{margin-top:56px;font-size:13px;color:var(--muted)}
+.crumb a{color:var(--muted);text-decoration:none}
+.crumb a:hover{color:var(--ink)}
+.lede{font-size:18px;max-width:54ch;margin-top:20px}
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.pill{padding:8px 14px;border:1px solid var(--hairline);border-radius:999px;font-size:13px;color:var(--soft)}
+.pill.on{border-color:rgba(198,166,100,.5);color:var(--gold)}
+section{padding-block:72px 0}
+section + section{margin-top:0}
+.rule{border-top:1px solid var(--hairline);padding-top:72px}
+.grid{display:grid;grid-template-columns:1fr;gap:28px;margin-top:32px}
+@media (min-width:720px){.grid.g3{grid-template-columns:repeat(3,1fr)}.grid.g2{grid-template-columns:repeat(2,1fr)}.grid.g4{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:960px){.grid.g4{grid-template-columns:repeat(4,1fr)}}
+.item{border-top:1px solid var(--hairline);padding-top:18px}
+.item p{font-size:15px;margin-top:8px}
+.item .n{font-family:var(--display);font-style:italic;font-size:40px;line-height:1;color:var(--gold)}
+a.item{display:block;text-decoration:none;color:var(--ink)}
+a.item:hover h3{color:var(--gold)}
+.split{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+@media (min-width:840px){.split{grid-template-columns:1.1fr .9fr;gap:64px}}
+.demo{background:var(--raise);border:1px solid var(--hairline);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:10px;width:100%;max-width:360px;justify-self:center}
+.demo .r{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#1F1F1F;border-radius:14px}
+.demo .d{width:8px;height:8px;border-radius:50%;flex:none}
+.demo .x{flex:1;min-width:0}
+.demo .nm{display:block;font-size:14px}
+.demo .sb{display:block;font-size:12px;color:var(--muted)}
+.demo button{font:inherit;font-size:12px;font-weight:600;min-width:64px;min-height:36px;padding:6px 12px;border-radius:999px;cursor:pointer;border:1px solid rgba(255,255,255,.2);background:transparent;color:var(--ink)}
+.demo button[aria-pressed=true]{border-color:var(--gold);background:var(--gold);color:#121212}
+.faq{max-width:760px;margin-top:24px}
+details{border-top:1px solid var(--hairline);padding:18px 0}
+details:last-child{border-bottom:1px solid var(--hairline)}
+summary{cursor:pointer;font-size:18px;color:var(--ink)}
+details p{font-size:15px;margin-top:10px}
+.close{text-align:center;padding-block:96px 0}
+.close h2{margin-inline:auto;max-width:22ch}
+.close .alt{display:inline-block;margin-top:18px;font-size:14px;color:var(--soft)}
+.stores{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:26px;flex-wrap:wrap}
+.sbtn{display:inline-flex;align-items:center;justify-content:center;gap:7px;width:136px;height:36px;border-radius:999px;font-weight:600;font-size:12.5px;text-decoration:none;white-space:nowrap}
+.sbtn svg{width:12px;height:14px;flex:none}
+.sbtn.store{background:var(--gold);color:#121212;border:1px solid var(--gold)}
+.sbtn.store:hover{background:#d4b778}
+.sbtn.android{color:var(--ink);border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.03)}
+.sbtn.android i{font-style:normal;font-size:10.5px;font-weight:500;color:var(--muted)}
+footer{margin-top:96px;border-top:1px solid var(--hairline);padding-block:24px 44px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="lockup" href="/" aria-label="Forgor home"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 12 C 26 12, 14 29, 14 48 C 14 60, 20 68, 29 73 L 29 86 L 71 86 L 71 73 C 80 68, 86 60, 86 48 C 86 29, 74 12, 50 12 Z" fill="none" stroke="#C6A664" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.5" cy="48" r="8.5" fill="#C6A664"/><circle cx="62.5" cy="48" r="8.5" fill="#C6A664"/><path d="M50 58 L 45.5 67 L 54.5 67 Z" fill="#C6A664"/><path d="M41.5 86 L 41.5 77 M 50 86 L 50 77 M 58.5 86 L 58.5 77" fill="none" stroke="#C6A664" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="wordmark">forgo<span class="r">r</span></span></a>
+  <nav class="nav" aria-label="Main"><a href="/#features">Features</a><a href="/tools/">Tools</a><a class="dl" href="#download">Download</a></nav>
+</header>
+<main>
+<nav class="crumb" aria-label="Breadcrumb"><a href="/">Forgor</a> <span aria-hidden="true">/</span> <a href="/#features">Features</a> <span aria-hidden="true">/</span> <span style="color:var(--ink)">Calendar</span></nav>
+<h1>Bring your important dates in from <em>your calendar.</em></h1>
+<p class="lede">Forgor reads the calendars on your iPhone (iCloud, Google, Outlook), finds the birthdays, renewals and appointments worth a nudge, and lets you keep the ones you want. It never changes your calendar.</p>
+<div class="pills">
+  <span class="pill on">iPhone calendars &middot; available now</span>
+  <span class="pill">iCloud &middot; Google &middot; Outlook</span>
+  <span class="pill">Read-only</span>
+</div>
+
+<section aria-labelledby="how-h">
+  <div class="rule">
+  <span class="cap gold">How it works</span>
+  <h2 id="how-h">Switch on, choose, <em>keep.</em></h2>
+  <ol class="grid g3" style="list-style:none;padding:0">
+    <li class="item"><span class="n">1</span><h3>Switch on your calendars</h3><p>In Settings &rarr; Sources &rarr; iPhone calendars. Your iPhone asks once whether Forgor may read them.</p></li>
+    <li class="item"><span class="n">2</span><h3>Choose which ones</h3><p>Switch on Family and Birthdays, leave Work off. Holiday calendars stay out of the way.</p></li>
+    <li class="item"><span class="n">3</span><h3>Keep what matters</h3><p>Forgor suggests the dates worth a nudge. Keep one, keep them all, or skip. Nothing is added without you.</p></li>
+  </ol>
+  </div>
+</section>
+
+<section aria-labelledby="finds-h">
+  <div class="rule split">
+    <div>
+      <span class="cap gold">What it looks for</span>
+      <h2 id="finds-h">The dates that come back, <em>not every meeting.</em></h2>
+      <p>Birthdays and anniversaries, renewals, bills, appointments, trips. Standups and lunch don't make the list.</p>
+      <p>If you already saved a date, or it sits in two calendars, it shows once. If an event moves or is cancelled later, Forgor shows a card so you can update yours or keep it.</p>
+    </div>
+    <div class="demo" role="group" aria-label="Example: dates suggested from a calendar">
+      <span class="cap">Suggested from your calendar</span>
+      <div class="r"><span class="d" style="background:var(--rose)"></span><span class="x"><span class="nm">Mom's birthday</span><span class="sb">Birthdays &middot; every year</span></span><button type="button" aria-pressed="true">Kept</button></div>
+      <div class="r"><span class="d" style="background:var(--mauve)"></span><span class="x"><span class="nm">Dentist cleaning</span><span class="sb">Family &middot; Dec 4</span></span><button type="button" aria-pressed="false">Keep</button></div>
+      <div class="r"><span class="d" style="background:var(--sage)"></span><span class="x"><span class="nm">Lease renewal</span><span class="sb">Home &middot; Jul 31</span></span><button type="button" aria-pressed="true">Kept</button></div>
+      <div class="r"><span class="d" style="background:var(--stone)"></span><span class="x"><span class="nm">Car insurance renews</span><span class="sb">Family &middot; Jun 1</span></span><button type="button" aria-pressed="false">Keep</button></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="trust-h">
+  <div class="rule">
+  <span class="cap gold">Your calendar stays yours</span>
+  <h2 id="trust-h">Read-only. <em>Always.</em></h2>
+  <div class="grid g4">
+    <div class="item"><h3>Never changes a thing</h3><p>Forgor can read events. It can't add, edit or delete them.</p></div>
+    <div class="item"><h3>Only what you pick</h3><p>Calendars you leave off are never read.</p></div>
+    <div class="item"><h3>Asks before AI</h3><p>Before any event is sent to pick out dates, Forgor asks. Nothing is sent unless you agree.</p></div>
+    <div class="item"><h3>Switch off anytime</h3><p>One switch in Settings stops it. <a href="/privacy">How calendar data is handled</a>.</p></div>
+  </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <div class="rule">
+  <h2 id="faq-h">Questions</h2>
+  <div class="faq">
+    <details><summary>Can Forgor import birthdays from my calendar?</summary><p>Yes. Switch on the calendars that hold birthdays and Forgor suggests each one, repeating every year, with a nudge ahead of time.</p></details>
+    <details><summary>Does it work with Google Calendar and Outlook?</summary><p>Yes, through your iPhone. If your Google or Outlook account is added to the iPhone's Calendar app, Forgor reads those calendars on the phone, the same way it reads iCloud.</p></details>
+    <details><summary>How do I bring in my Outlook calendar?</summary><p>A personal Outlook account (outlook.com, hotmail.com, live.com or msn.com) works through your iPhone calendars:</p><ol style="color:var(--soft);font-size:15px;margin:10px 0 0;padding-left:20px"><li>On your iPhone, add the account under Settings &rarr; Apps &rarr; Calendar &rarr; Calendar Accounts, with Calendars turned on.</li><li>In Forgor, open Sources &rarr; iPhone calendars. Your Outlook calendars show under an &ldquo;Outlook&rdquo; heading, with the email address beside it.</li><li>Switch on the ones you want and tap Turn on.</li></ol></details>
+    <details><summary>Will Forgor change or delete my events?</summary><p>No. Access is read-only.</p></details>
+    <details><summary>What is sent off my phone?</summary><p>Only if you agree: the titles, dates and times of events in the calendars you switched on go to an AI model (Anthropic's Claude), only to pick out the dates worth a reminder. They are not used to train a model. Details are in the <a href="/privacy">privacy policy</a>.</p></details>
+    <details><summary>What happens when I add a new event later?</summary><p>Forgor checks again when you open the app or pull down to refresh, and suggests anything new. If an event you kept moves or is cancelled, you'll see a card.</p></details>
+  </div>
+  </div>
+</section>
+</main>
+<div class="close" id="download">
+  <h2>Your calendar has the dates. <em>Forgor has the nudge.</em></h2>
+  <div class="stores"><a class="sbtn store" aria-label="Get Forgor on the App Store" href="https://apps.apple.com/us/app/forgor/id6813771857" data-store="calendar" rel="noopener"><svg width="13" height="15" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span>App Store</span></a><a class="sbtn android" aria-label="Forgor is coming soon to Google Play" href="mailto:hello@forgor.app?subject=Tell%20me%20when%20Forgor%20is%20on%20Android" onclick="if(window.forgorAndroidNote){event.preventDefault();forgorAndroidNote();}"><svg width="13" height="14" viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg><span>Google Play</span><i>soon</i></a></div>
+  <a class="alt" href="/#features">Other ways to add dates &rarr;</a>
+</div>
+<footer>
+  <span class="cap">Forgor &nbsp;·&nbsp; © 2026 Sym Ventures LLC</span>
+  <span><a href="/calendar/" class="cap">Calendar</a> &nbsp;·&nbsp; <a href="/tools/" class="cap">Tools</a> &nbsp;·&nbsp; <a href="/privacy" class="cap">Privacy</a> &nbsp;·&nbsp; <a href="mailto:hello@forgor.app" class="cap">hello@forgor.app</a></span>
+</footer>
+</div>
+<script>
+  document.querySelectorAll('.demo button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var on = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.textContent = on ? 'Kept' : 'Keep';
+    });
+  });
+</script>
+
+<script src="/js/store.js"></script>
+<script data-goatcounter="https://forgor.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

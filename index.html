@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Forgor — household reminder app for renewals, expirations and birthdays</title>
-<meta name="description" content="Not another to-do list. A household reminder app for the dates that cost you when they slip: registration, passports, trials, birthdays. One early nudge.">
+<title>Forgor: Reminders &amp; Countdowns — bills, birthdays &amp; due dates</title>
+<meta name="description" content="Not another to-do list. One shared household list for bills, renewals, passports and birthdays, with one early nudge. Brings dates in from your calendar, a photo or an email.">
 <link rel="canonical" href="https://forgor.app/">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="apple-itunes-app" content="app-id=6813771857">
@@ -40,10 +40,8 @@
     "@id": "https://forgor.app/#website",
     "url": "https://forgor.app/",
     "name": "Forgor",
+    "alternateName": "Forgor: Reminders & Countdowns",
     "inLanguage": "en-US",
-    "downloadUrl": "https://apps.apple.com/us/app/forgor/id6813771857",
-    "installUrl": "https://apps.apple.com/us/app/forgor/id6813771857",
-    "sameAs": ["https://apps.apple.com/us/app/forgor/id6813771857"],
     "publisher": {
       "@id": "https://forgor.app/#organization"
     }
@@ -53,28 +51,46 @@
     "@type": "Organization",
     "@id": "https://forgor.app/#organization",
     "name": "Forgor",
+    "legalName": "Sym Ventures LLC",
     "url": "https://forgor.app/",
     "logo": "https://forgor.app/apple-touch-icon.png",
-    "email": "hello@forgor.app"
+    "email": "hello@forgor.app",
+    "sameAs": [
+      "https://apps.apple.com/us/app/forgor/id6813771857",
+      "https://x.com/Forgorapp",
+      "https://www.threads.net/@forgor.app",
+      "https://www.tiktok.com/@forgor.app"
+    ]
   },
   {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
     "@id": "https://forgor.app/#app",
-    "name": "Forgor",
+    "name": "Forgor: Reminders & Countdowns",
+    "alternateName": "Forgor",
     "operatingSystem": "iOS",
     "applicationCategory": "LifestyleApplication",
     "url": "https://forgor.app/",
+    "downloadUrl": "https://apps.apple.com/us/app/forgor/id6813771857",
+    "installUrl": "https://apps.apple.com/us/app/forgor/id6813771857",
     "image": "https://forgor.app/og-v2.png",
     "screenshot": "https://forgor.app/forgor-coming-up-screen.webp",
     "inLanguage": "en-US",
-    "description": "Forgor keeps the dates that cost you something when they slip — free trials, subscription renewals, car registration, passports, birthdays — on one household list, and nudges the right person ahead of time.",
+    "description": "Forgor keeps the dates that cost you something when they slip (bills, trials, subscription renewals, car registration, passports, birthdays) on one household list, and nudges the right person ahead of time.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
     "featureList": [
       "One list for birthdays, home, car, documents, health and money dates",
       "A single nudge ahead of time, two weeks by default, at an hour you choose",
       "Dates that pass roll forward on their own — nothing is ever overdue",
       "Shared with a household, each date nudging the person it is for",
-      "Add a date by typing it, from a contact, from a photo, or by forwarding an email"
+      "Add a date by typing it, from a contact, from a photo, or by forwarding an email",
+      "Finds birthdays, renewals and appointments in the calendars on your iPhone (iCloud, Google, Outlook), read-only",
+      "Public holidays, with a nudge before Mother's Day, Father's Day and Valentine's Day",
+      "Weekly, monthly and yearly repeats, with an optional end date"
     ],
     "publisher": {
       "@id": "https://forgor.app/#organization"
@@ -234,6 +250,8 @@
   .point{border-top:1px solid var(--hairline);padding-top:20px}
   .point h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.2;margin:0;color:var(--ink)}
   .point h3 em{font-style:italic;color:var(--gold)}
+  .status{display:inline-block;margin-left:10px;padding:3px 9px;border:1px solid var(--hairline);border-radius:999px;font-family:var(--text);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);vertical-align:middle}
+  .status.live{border-color:rgba(198,166,100,.45);color:var(--gold)}
   .point p{font-size:15px;margin-top:10px}
 
   /* band */
@@ -288,6 +306,71 @@
   footer a:hover{color:var(--ink)}
   a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:3px}
 
+  /* nav */
+  .nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+  .nav a{color:var(--ink);text-decoration:none;font-size:14px;padding:12px 12px;border-radius:999px}
+  .nav a:hover{color:var(--gold)}
+  .nav a.dl{background:var(--gold);color:#121212;font-weight:600;padding:10px 18px;margin-left:6px}
+  .nav a.dl:hover{background:#d4b778;color:#121212}
+  @media (max-width:420px){.nav a:not(.dl){padding:12px 8px}.wordmark{font-size:32px}}
+  @media (min-width:720px){.cards.three{grid-template-columns:repeat(3,1fr)}}
+  /* ways to add a date */
+  .feat{padding-block:104px 0}
+  .tablist{display:flex;gap:4px;flex-wrap:wrap;margin-top:34px;padding:6px;background:var(--raise);border:1px solid var(--hairline);border-radius:28px;width:fit-content;max-width:100%}
+  .tablist button{font:inherit;font-size:14px;font-weight:500;min-height:44px;padding:10px 16px;border-radius:999px;border:0;background:transparent;color:#CFC8BA;cursor:pointer}
+  .tablist button[aria-selected=true]{background:var(--gold);color:#121212;font-weight:600}
+  .tablist button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .panel{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;margin-top:44px}
+  @media (min-width:840px){.panel{grid-template-columns:1.05fr .95fr;gap:64px}}
+  .panel[hidden]{display:none}
+  .panel h3{font-family:var(--display);font-weight:400;font-size:clamp(28px,3.4vw,36px);line-height:1.15;margin:0;color:var(--ink);text-wrap:balance}
+  .panel p{font-size:17px}
+  .more{display:inline-block;margin-top:18px;color:var(--gold);font-weight:600;font-size:14px;text-decoration:none;padding:10px 0}
+  .new{display:inline-block;margin-bottom:14px;padding:4px 10px;border:1px solid rgba(198,166,100,.45);border-radius:999px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+  .pm{width:min(300px,100%);justify-self:center;min-height:500px;border-radius:44px;border:1px solid rgba(255,255,255,.14);background:var(--raise);padding:56px 20px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 34px 70px rgba(0,0,0,.5)}
+  .pm .t{font-family:var(--display);font-size:26px;line-height:1.15;margin-bottom:8px}
+  .pm .r{display:flex;align-items:center;gap:12px;padding:14px;background:#1F1F1F;border-radius:14px}
+  .pm .d{width:8px;height:8px;border-radius:50%;flex:none}
+  .pm .x{flex:1;min-width:0}
+  .pm .n{display:block;font-size:14px}
+  .pm .s{display:block;font-size:12px;color:var(--muted)}
+  .pm .v{font-size:12px;color:var(--gold);white-space:nowrap}
+  .pm .cta{margin-top:auto;text-align:center;background:var(--gold);color:#121212;font-weight:600;font-size:14px;padding:13px;border-radius:14px}
+  .tools{display:grid;grid-template-columns:1fr;gap:34px 40px;margin-top:34px}
+  @media (min-width:720px){.tools{grid-template-columns:repeat(3,1fr)}}
+  #features,#tools,#download,#nudge{scroll-margin-top:24px}
+
+  /* phone: tighter rhythm, swipe rows instead of stacks */
+  @media (max-width:719px){
+    .costs,.feat,.why{padding-block:64px 0}
+    .row{padding-block:56px 0;gap:28px}
+    .close{padding-block:64px 0}
+    .hero .device{width:min(220px,58vw)}
+    .cards.three,.tools{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-24px;padding-inline:24px;scroll-padding-inline:24px;scrollbar-width:none;background:none;border:0;border-radius:0}
+    .cards.three::-webkit-scrollbar,.tools::-webkit-scrollbar{display:none}
+    .cards.three .card{flex:0 0 78%;scroll-snap-align:start;border:1px solid var(--hairline);border-radius:18px}
+    .tools .point{flex:0 0 72%;scroll-snap-align:start}
+    .cards.three{margin-top:24px}.tools{margin-top:24px}
+    .story{margin-top:20px;padding:16px 18px}
+    .story-a{display:none}
+    .sechead p{font-size:15px}
+    .tablist{margin-top:24px}
+    .panel{gap:24px;margin-top:28px}
+    .panel p{font-size:16px}
+    .pm{min-height:0;padding:28px 18px 18px;border-radius:32px;width:min(280px,100%)}
+    .pm .cta{margin-top:6px}
+    #nudge .frame{aspect-ratio:430/560}
+    #nudge .lock .foot{display:none}
+    #nudge .device{width:min(250px,64vw)}
+    .signoff{margin-top:56px}
+    #nudge .copy p + p{display:none}
+    .costs,#nudge,#tools{display:none}
+    .panel p + p{display:none}
+    .close p.ph{display:block}
+    .hero .device{width:min(200px,54vw)}
+  }
+
+  .close .ph{display:none;margin:12px auto 0;text-align:center}
   html{overflow-x:hidden;overflow-x:clip}
 </style>
   <meta name="p:domain_verify" content="1763009640aee1355ee2a9f9966df35a"/>
@@ -299,6 +382,7 @@
   <header>
     <div class="masthead">
       <div class="lockup"><svg class="mark" viewBox="0 0 100 100" role="img" aria-label="Forgor"><path d="M50 12 C 26 12, 14 29, 14 48 C 14 60, 20 68, 29 73 L 29 86 L 71 86 L 71 73 C 80 68, 86 60, 86 48 C 86 29, 74 12, 50 12 Z" fill="none" stroke="#C6A664" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.5" cy="48" r="8.5" fill="#C6A664"/><circle cx="62.5" cy="48" r="8.5" fill="#C6A664"/><path d="M50 58 L 45.5 67 L 54.5 67 Z" fill="#C6A664"/><path d="M41.5 86 L 41.5 77 M 50 86 L 50 77 M 58.5 86 L 58.5 77" fill="none" stroke="#C6A664" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="wordmark">forgo<span class="r">r</span></span></div>
+      <nav class="nav" aria-label="Main"><a href="#features">Features</a><a href="/tools/">Tools</a><a class="dl" href="#download">Download</a></nav>
     </div>
   </header>
 
@@ -311,7 +395,7 @@
         <div class="stores"><a class="sbtn store" aria-label="Get Forgor on the App Store" href="https://apps.apple.com/us/app/forgor/id6813771857" data-store="site" rel="noopener"><svg width="13" height="15" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span>App Store</span></a><a class="sbtn android" aria-label="Forgor is coming soon to Google Play" href="mailto:hello@forgor.app?subject=Tell%20me%20when%20Forgor%20is%20on%20Android" onclick="if(window.forgorAndroidNote){event.preventDefault();forgorAndroidNote();}"><svg width="13" height="14" viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg><span>Google Play</span><i>soon</i></a></div>
       </div>
     </div>
-    <div class="device"><img src="/forgor-coming-up-screen.webp" alt="The Forgor Coming up screen: a free trial ending, an air filter, a car registration renewal, a birthday and a passport expiry, grouped by month with a countdown beside each, and one date found in a forwarded email at the top" width="640" height="1390" fetchpriority="high" decoding="async"></div>
+    <div class="device"><img src="/forgor-coming-up-screen.webp" alt="The Forgor Coming up screen: a trial ending, an air filter, a car registration renewal, a birthday and a passport expiry, grouped by month with a countdown beside each, and one date found in a forwarded email at the top" width="640" height="1390" fetchpriority="high" decoding="async"></div>
   </div>
 
   <section class="costs" aria-labelledby="costs-h">
@@ -320,16 +404,11 @@
       <h2 id="costs-h">The notice got lost in the pile. <em style="font-style:italic;color:var(--gold)">The fee didn't.</em></h2></div>
       <p>Almost nobody who missed one was careless. The reminder never came, or came into a pile on the counter.</p>
     </div>
-    <div class="cards">
+    <div class="cards three">
       <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--slate)"></span><span class="cap">Car</span></span>
         <h3>Found out at a traffic stop.</h3>
         <div class="cost">A ticket, a late fee, sometimes a tow.</div>
-      </article>
-      <article class="card">
-        <span class="kind"><span class="dot6" style="background:var(--sage)"></span><span class="cap">Home</span></span>
-        <h3>The homestead exemption nobody filed.</h3>
-        <div class="cost">Due April 30 in Texas. Miss it and you overpay property tax.</div>
       </article>
       <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--ochre)"></span><span class="cap">Documents</span></span>
@@ -338,18 +417,8 @@
       </article>
       <article class="card">
         <span class="kind"><span class="dot6" style="background:var(--stone)"></span><span class="cap">Money</span></span>
-        <h3>The free trial that wasn't.</h3>
+        <h3>The trial you meant to cancel.</h3>
         <div class="cost">Cancel on day six, charged on day eight, at the yearly price.</div>
-      </article>
-      <article class="card">
-        <span class="kind"><span class="dot6" style="background:var(--sage)"></span><span class="cap">Home</span></span>
-        <h3>The home insurance that lapsed quietly.</h3>
-        <div class="cost">The card on file expired. So did the cover.</div>
-      </article>
-      <article class="card">
-        <span class="kind"><span class="dot6" style="background:var(--ochre)"></span><span class="cap">Documents</span></span>
-        <h3>The green card, the work permit, the visa.</h3>
-        <div class="cost">Months to process, and nobody else is watching the date.</div>
       </article>
     </div>
     <a class="story" href="mailto:hello@forgor.app?subject=I%20forgor&amp;body=What%20slipped%3A%0AWhat%20it%20cost%3A%0AHow%20you%20keep%20track%20now%3A%0A" data-goatcounter-click="story-email" data-goatcounter-title="Tell us what you forgor">
@@ -359,88 +428,131 @@
     </a>
   </section>
 
-  <section class="plan" aria-labelledby="plan-h">
+  <section class="feat" id="features" aria-labelledby="feat-h">
     <div class="sechead">
-      <div><span class="cap gold">How it works</span>
-      <h2 id="plan-h">Three steps. <em style="font-style:italic;color:var(--gold)">Then nothing to remember.</em></h2></div>
-      <p>Set it up once on a Sunday afternoon. Forgor does the remembering from there.</p>
+      <div><span class="cap gold">Ways to add a date</span>
+      <h2 id="feat-h">Five minutes on a Sunday. <em style="font-style:italic;color:var(--gold)">Then nothing to remember.</em></h2></div>
+      <p>Bring dates in from your calendar, a photo, an email or your contacts, or type them once. Then invite your household.</p>
     </div>
-    <div class="steps">
-      <div class="step"><span class="n">1</span><h3>Add your dates.</h3><p>Type them, point the camera at the document, take birthdays from contacts, or forward the renewal email.</p></div>
-      <div class="step"><span class="n">2</span><h3>Invite your household.</h3><p>Each date nudges the person it belongs to.</p></div>
-      <div class="step"><span class="n">3</span><h3>Get one nudge, early.</h3><p>Two weeks ahead by default. Then silence.</p></div>
+
+    <div class="tablist" role="tablist" aria-label="Ways to add a date">
+      <button type="button" role="tab" id="t-calendar" aria-controls="p-calendar" aria-selected="true">Calendar</button>
+      <button type="button" role="tab" id="t-photo" aria-controls="p-photo" aria-selected="false" tabindex="-1">Photo</button>
+      <button type="button" role="tab" id="t-email" aria-controls="p-email" aria-selected="false" tabindex="-1">Email</button>
+      <button type="button" role="tab" id="t-type" aria-controls="p-type" aria-selected="false" tabindex="-1">Type</button>
+      <button type="button" role="tab" id="t-contacts" aria-controls="p-contacts" aria-selected="false" tabindex="-1">Contacts</button>
+      <button type="button" role="tab" id="t-holidays" aria-controls="p-holidays" aria-selected="false" tabindex="-1">Holidays</button>
+      <button type="button" role="tab" id="t-household" aria-controls="p-household" aria-selected="false" tabindex="-1">Household</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-calendar" aria-labelledby="t-calendar">
+      <div>
+        <span class="new">New</span>
+        <h3>The dates are already in your calendar.</h3>
+        <p>Forgor reads the calendars on your iPhone (iCloud, Google, Outlook) and suggests the birthdays, renewals and appointments worth a nudge. The meetings stay out. You keep the ones you want.</p>
+        <p>Read-only, and nothing is doubled up. If an event moves or is cancelled, you'll see a card.</p>
+        <a class="more" href="/calendar/">More about calendar import &rarr;</a>
+      </div>
+      <div class="pm" aria-hidden="true">
+        <span class="cap">From your calendar</span><div class="t">5 dates found</div>
+        <div class="r"><span class="d" style="background:var(--rose)"></span><span class="x"><span class="n">Leo's birthday</span><span class="s">iCloud &middot; every year</span></span><span class="v">Jan 9</span></div>
+        <div class="r"><span class="d" style="background:var(--slate)"></span><span class="x"><span class="n">CR-V registration</span><span class="s">Google</span></span><span class="v">Mar 31</span></div>
+        <div class="r"><span class="d" style="background:var(--mauve)"></span><span class="x"><span class="n">Biscuit's vet visit</span><span class="s">Outlook</span></span><span class="v">Dec 4</span></div>
+        <div class="cta">Keep 3</div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-photo" aria-labelledby="t-photo">
+      <div>
+        <h3>Point the camera at it.</h3>
+        <p>Snap a bill, a registration card or a flyer. The date, time, price and address come off it, read on your phone. You check it and save.</p>
+      </div>
+      <div class="pm" aria-hidden="true">
+        <span class="cap">Found in your photo</span><div class="t">Passport</div>
+        <div class="r"><span class="d" style="background:var(--ochre)"></span><span class="x"><span class="n">Expires</span><span class="s">Read from the photo</span></span><span class="v">Feb 25, 2027</span></div>
+        <div class="r"><span class="d" style="background:var(--ochre)"></span><span class="x"><span class="n">Kind</span><span class="s">Documents</span></span><span class="v">Passport</span></div>
+        <div class="r"><span class="d" style="background:var(--gold)"></span><span class="x"><span class="n">Nudge</span><span class="s">Time to renew</span></span><span class="v">2 mo before</span></div>
+        <div class="cta">Save date</div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-email" aria-labelledby="t-email">
+      <div>
+        <h3>Forward the renewal email.</h3>
+        <p>Your household gets its own Forgor address. Forward an insurance renewal, a subscription or a booking and the date shows up, ready to keep.</p>
+      </div>
+      <div class="pm" aria-hidden="true">
+        <span class="cap">From your email</span><div class="t">Found 2 dates</div>
+        <div class="r"><span class="d" style="background:var(--stone)"></span><span class="x"><span class="n">Car insurance renews</span><span class="s">From: your insurer</span></span><span class="v">Jun 1</span></div>
+        <div class="r"><span class="d" style="background:var(--stone)"></span><span class="x"><span class="n">Streaming trial ends</span><span class="s">From: the service</span></span><span class="v">Nov 21</span></div>
+        <div class="cta">Keep both</div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-type" aria-labelledby="t-type">
+      <div>
+        <span class="new">New: weekly repeats</span>
+        <h3>Type it once. It repeats itself.</h3>
+        <p>Pick a kind (Car, Home, Documents, Health, Money, Anniversaries or your own) and a date. Birthdays and yearly renewals roll forward on their own. Weekly and monthly bills repeat until the end date you set.</p>
+      </div>
+      <div class="pm" aria-hidden="true">
+        <span class="cap">New date</span><div class="t">Rent</div>
+        <div class="r"><span class="d" style="background:var(--sage)"></span><span class="x"><span class="n">Repeats</span><span class="s">On the 1st</span></span><span class="v">Every month</span></div>
+        <div class="r"><span class="d" style="background:var(--sage)"></span><span class="x"><span class="n">Ends</span><span class="s">When the lease does</span></span><span class="v">Jul 31, 2027</span></div>
+        <div class="r"><span class="d" style="background:var(--gold)"></span><span class="x"><span class="n">Nudge</span><span class="s">One, early</span></span><span class="v">3 days before</span></div>
+        <div class="cta">Save</div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-contacts" aria-labelledby="t-contacts">
+      <div>
+        <h3>Birthdays from your contacts.</h3>
+        <p>Choose who comes in. Their birthdays and anniversaries arrive with a nudge a week ahead, so nobody gets a late text.</p>
+      </div>
+      <div class="pm" aria-hidden="true">
+        <span class="cap">From your contacts</span><div class="t">12 birthdays found</div>
+        <div class="r"><span class="d" style="background:var(--rose)"></span><span class="x"><span class="n">Maya Ellis</span><span class="s">Birthday &middot; turns 41</span></span><span class="v">Jan 20</span></div>
+        <div class="r"><span class="d" style="background:var(--rose)"></span><span class="x"><span class="n">Sam &amp; Priya</span><span class="s">Anniversary</span></span><span class="v">Apr 3</span></div>
+        <div class="r"><span class="d" style="background:var(--rose)"></span><span class="x"><span class="n">Dad</span><span class="s">Birthday</span></span><span class="v">Aug 14</span></div>
+        <div class="cta">Add selected</div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-holidays" aria-labelledby="t-holidays">
+      <div>
+        <span class="new">New</span>
+        <h3>Holidays, without the clutter.</h3>
+        <p>Switch on US holidays in Settings. Mother's Day, Father's Day and Valentine's Day get a nudge a week before, while there's still time to order something. Switch off any you don't want.</p>
+      </div>
+      <div class="pm" aria-hidden="true">
+        <span class="cap">Public holidays</span><div class="t">Coming up</div>
+        <div class="r"><span class="d" style="background:var(--stone)"></span><span class="x"><span class="n">Thanksgiving</span><span class="s">US holiday</span></span><span class="v">Nov 26</span></div>
+        <div class="r"><span class="d" style="background:var(--rose)"></span><span class="x"><span class="n">Valentine's Day</span><span class="s">Nudge a week before</span></span><span class="v">Feb 14</span></div>
+        <div class="r"><span class="d" style="background:var(--rose)"></span><span class="x"><span class="n">Mother's Day</span><span class="s">Nudge a week before</span></span><span class="v">May 9</span></div>
+        <div class="cta">Switch on</div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-household" aria-labelledby="t-household">
+      <div>
+        <h3>One list for the whole house.</h3>
+        <p>Invite your partner, your parents or your roommates. Each date nudges the person it's for. A change anyone makes reaches everyone's nudges, even before they open the app. Keep a date private when it's only yours.</p>
+      </div>
+      <div class="pm" aria-hidden="true">
+        <span class="cap">Household</span><div class="t">Our house</div>
+        <div class="r"><span class="d" style="background:var(--slate)"></span><span class="x"><span class="n">Car registration</span><span class="s">Nudges: you</span></span><span class="v">Mar 31</span></div>
+        <div class="r"><span class="d" style="background:var(--sage)"></span><span class="x"><span class="n">HOA dues</span><span class="s">Nudges: partner</span></span><span class="v">Jan 1</span></div>
+        <div class="r"><span class="d" style="background:var(--rose)"></span><span class="x"><span class="n">Mom's birthday</span><span class="s">Nudges: everyone</span></span><span class="v">Mar 12</span></div>
+        <div class="cta">Invite someone</div>
+      </div>
     </div>
   </section>
 
-  <div class="row flip">
-    <div class="copy">
-      <span class="cap gold">One shelf, not five apps</span>
-      <h2>Everything that comes back around, in one place.</h2>
-      <p>Birthday apps do birthdays. Car apps do oil changes. Forgor holds all of it and answers one question: what's due this month?</p>
-            <div class="shelf">
-        <span class="chip"><span class="dot6" style="background:var(--rose)"></span>Anniversaries</span>
-        <span class="chip"><span class="dot6" style="background:var(--sage)"></span>Home</span>
-        <span class="chip"><span class="dot6" style="background:var(--slate)"></span>Car</span>
-        <span class="chip"><span class="dot6" style="background:var(--ochre)"></span>Documents</span>
-        <span class="chip"><span class="dot6" style="background:var(--mauve)"></span>Health</span>
-        <span class="chip"><span class="dot6" style="background:var(--stone)"></span>Money</span>
-        <span class="chip">Add your own</span>
-      </div>
-    </div>
-    <div class="device">
-      <div class="frame">
-        <div class="screen" role="img" aria-label="The Months screen, on Later: dates beyond next month grouped by month, each showing how far ahead it nudges">
-          <div class="glow"></div>
-          <div class="sb"><span class="t">10:42</span><span class="island"></span><span class="ic">
-            <svg viewBox="0 0 16 12" width="18" height="14" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.3" stroke-linecap="round"><path d="M1.2 4.2a10 10 0 0 1 13.6 0"/><path d="M3.7 6.9a6.4 6.4 0 0 1 8.6 0"/><path d="M6.2 9.5a2.8 2.8 0 0 1 3.6 0"/></svg>
-            <span class="bat"></span></span></div>
-          <div class="mo">
-            <div class="head">
-              <span class="cap2">Beyond next month</span>
-              <span class="chev">
-                <span class="on"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg></span>
-                <span class="off"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></span>
-              </span>
-            </div>
-            <h3>Later</h3>
-            <div class="counts">Four things · <span style="color:#D39A95">1 birthday</span> · <span style="color:#9BBFA4">1 home</span> · <span style="color:#D9BE7E">1 document</span> · <span style="color:#C9B8A6">1 money</span></div>
-            <div class="segs">
-              <span class="seg"><span class="cap2">This month</span></span>
-              <span class="seg"><span class="cap2">Next month</span></span>
-              <span class="seg on"><span class="cap2">Later</span></span>
-            </div>
-            <div class="grp">
-              <span class="cap2">January 2027</span>
-              <div class="drow last"><span class="day"><b>20</b><span class="cap2">Wed</span></span><span class="dot" style="background:#D39A95"></span><span class="txt"><div class="nm">Maya Ellis</div><div class="sb2">Birthday · Turns 41</div></span><span class="rt">1 wk before</span></div>
-            </div>
-            <div class="grp">
-              <span class="cap2">February 2027</span>
-              <div class="drow last"><span class="day"><b>25</b><span class="cap2">Thu</span></span><span class="dot" style="background:#D9BE7E"></span><span class="txt"><div class="nm">Passport expires</div><div class="sb2">Documents · Once</div></span><span class="rt">2 mo before</span></div>
-            </div>
-            <div class="grp">
-              <span class="cap2">March 2027</span>
-              <div class="drow last"><span class="day"><b>8</b><span class="cap2">Mon</span></span><span class="dot" style="background:#9BBFA4"></span><span class="txt"><div class="nm">Smoke alarm batteries</div><div class="sb2">Home · Every year</div></span><span class="rt">1 wk before</span></div>
-            </div>
-            <div class="grp">
-              <span class="cap2">June 2027</span>
-              <div class="drow last"><span class="day"><b>1</b><span class="cap2">Tue</span></span><span class="dot" style="background:#C9B8A6"></span><span class="txt"><div class="nm">Car insurance renews</div><div class="sb2">Money · Every year</div></span><span class="rt">1 mo before</span></div>
-            </div>
-          </div>
-          <div class="tabs">
-            <span class="tab"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1.5" y="2.8" width="13" height="11.7" rx="2"/><path d="M1.5 6.2h13M5 1.5v2.6M11 1.5v2.6"/></svg><span class="cap2">Upcoming</span></span>
-            <span class="tab on"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1.6" y="1.6" width="5.2" height="5.2" rx="1.3"/><rect x="9.2" y="1.6" width="5.2" height="5.2" rx="1.3"/><rect x="1.6" y="9.2" width="5.2" height="5.2" rx="1.3"/><rect x="9.2" y="9.2" width="5.2" height="5.2" rx="1.3"/></svg><span class="cap2">Months</span></span>
-            <span class="tab"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="2.6"/><path d="M8 1.4v2M8 12.6v2M1.4 8h2M12.6 8h2M3.3 3.3l1.4 1.4M11.3 11.3l1.4 1.4M12.7 3.3l-1.4 1.4M4.7 11.3l-1.4 1.4"/></svg><span class="cap2">Settings</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
+  <div class="row" id="nudge">
     <div class="copy">
       <span class="cap gold">The whole product, in one line</span>
       <h2>A nudge two weeks out, then silence.</h2>
-      <p>Once, early enough to do something about it. No badges, no daily digest, no reminder about the reminder.</p>
+      <p>Once, early enough to do something about it. No badges, no daily digest, nothing ever overdue: a date that passes rolls forward on its own.</p>
       <p>Two weeks ahead by default. Passports get two months. You pick the hour.</p>
     </div>
     <div class="device">
@@ -463,60 +575,32 @@
       </div>
     </div>
   </div>
-  <section class="why" aria-labelledby="why-h">
-    <div class="sechead">
-      <div><span class="cap gold">Why this one</span>
-      <h2 id="why-h">Built from the complaints about the others.</h2></div>
-      <p>Most reminder apps are to-do lists with alarms: tasks pile up, go red, and nag. Forgor is built for the dates that come back every year and cost you when they slip. Each point answers a complaint we kept reading in other apps' one-star reviews.</p>
-    </div>
-    <div class="points">
-      <div class="point">
-        <h3>Nudges that <em>arrive.</em></h3>
-        <p>Each nudge is set on your phone the moment you save the date.</p>
-      </div>
-      <div class="point">
-        <h3>Your dates survive a <em>new phone.</em></h3>
-        <p>Kept with your account, so a new phone or a reinstall loses nothing.</p>
-      </div>
-      <div class="point">
-        <h3>No bank login. <em>Ever.</em></h3>
-        <p>Type it, scan it, take it from a contact or forward the email.</p>
-      </div>
-      <div class="point">
-        <h3>One list for the <em>household.</em></h3>
-        <p>Each date nudges the person it belongs to. Mom's birthday nudges everyone.</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="why" aria-labelledby="tools-h">
+  <section class="why" id="tools" aria-labelledby="tools-h">
     <div class="sechead">
       <div><span class="cap gold">Handy tools</span>
       <h2 id="tools-h">Work out the date. <em style="font-style:italic;color:var(--gold)">Then hand it to Forgor.</em></h2></div>
-      <p>Quick calculators and checklists for the deadlines people search for most. Nothing you enter leaves your browser.</p>
+      <p>Quick calculators and checklists for the deadlines people search for most. Nothing you enter leaves your browser. <a href="/tools/" style="color:var(--gold)">All 10 tools &amp; guides &rarr;</a></p>
     </div>
-    <div class="points"><a class="point" href="/quiz/" style="text-decoration:none;display:block"><h3>How Forgor are you?</h3><p>The 60-second test of the dates you should know.</p></a><a class="point" href="/homestead/" style="text-decoration:none;display:block"><h3>Homestead deadline</h3><p>When to file the Texas homestead exemption, and where.</p></a><a class="point" href="/registration/" style="text-decoration:none;display:block"><h3>Registration window</h3><p>When to renew your Texas registration and get the emissions test.</p></a><a class="point" href="/passport/" style="text-decoration:none;display:block"><h3>Passport check</h3><p>Is your passport valid for the trip? Check before you book.</p></a><a class="point" href="/trial/" style="text-decoration:none;display:block"><h3>Trial calculator</h3><p>The exact day a trial bills, and the day to decide by.</p></a><a class="point" href="/new-to-texas/" style="text-decoration:none;display:block"><h3>New to Texas</h3><p>The deadlines for your car, license and home after you move.</p></a><a class="point" href="/texas-homeowner-checklist/" style="text-decoration:none;display:block"><h3>Homeowner checklist</h3><p>Every date a Texas house comes with, through the year.</p></a><a class="point" href="/rip/" style="text-decoration:none;display:block"><h3>Forgor Funeral</h3><p>Make a gravestone for the date you forgot.</p></a></div>
+    <div class="tools">
+      <a class="point" href="/passport/" style="text-decoration:none;display:block"><h3>Passport check</h3><p>Is your passport valid for the trip? Check before you book.</p></a>
+      <a class="point" href="/trial/" style="text-decoration:none;display:block"><h3>Trial calculator</h3><p>The exact day a trial bills, and the day to decide by.</p></a>
+      <a class="point" href="/household-dates-checklist/" style="text-decoration:none;display:block"><h3>Household dates checklist</h3><p>Every date your home should track, and how often each comes around.</p></a>
+    </div>
   </section>
 </div>
 
-<div class="band">
-  <div class="wrap">
-    <span class="cap">The part that isn't a to-do list</span>
-    <h2 class="quote">Nothing is ever overdue.<br><span class="gold">We nudge. We don't nag.</span></h2>
-    <p>No checkboxes, no pile of things you failed to do. A date that passes rolls forward on its own.</p>
-  </div>
-</div>
-
 <div class="wrap">
-  <div class="close">
+  <div class="close" id="download">
     <h2>Save it once. Forget it on purpose.</h2>
+    <p class="ph">One nudge, early. Then silence. Nothing is ever overdue.</p>
     <div class="stores"><a class="sbtn store" aria-label="Get Forgor on the App Store" href="https://apps.apple.com/us/app/forgor/id6813771857" data-store="site" rel="noopener"><svg width="13" height="15" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span>App Store</span></a><a class="sbtn android" aria-label="Forgor is coming soon to Google Play" href="mailto:hello@forgor.app?subject=Tell%20me%20when%20Forgor%20is%20on%20Android" onclick="if(window.forgorAndroidNote){event.preventDefault();forgorAndroidNote();}"><svg width="13" height="14" viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg><span>Google Play</span><i>soon</i></a></div>
   </div>
 
 
   <footer>
     <span class="cap">Forgor &nbsp;·&nbsp; © 2026 Sym Ventures LLC</span>
-    <span><a href="/#tools-h" class="cap">Tools</a> &nbsp;·&nbsp; <a href="/privacy" class="cap">Privacy</a> &nbsp;·&nbsp; <a href="mailto:hello@forgor.app" class="cap">hello@forgor.app</a></span>
+    <span><a href="/calendar/" class="cap">Calendar</a> &nbsp;·&nbsp; <a href="/tools/" class="cap">Tools</a> &nbsp;·&nbsp; <a href="/privacy" class="cap">Privacy</a> &nbsp;·&nbsp; <a href="mailto:hello@forgor.app" class="cap">hello@forgor.app</a></span>
   </footer>
 </div>
 
@@ -552,6 +636,32 @@
     });
     document.getElementById('storeDlgClose').addEventListener('click', function () { dlg.close(); });
     dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  })();
+</script>
+<script>
+  (function () {
+    var list = document.querySelector('.tablist');
+    if (!list) return;
+    var tabs = [].slice.call(list.querySelectorAll('[role=tab]'));
+    function pick(t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) t.focus();
+    }
+    tabs.forEach(function (t) { t.addEventListener('click', function () { pick(t); }); });
+    list.addEventListener('keydown', function (e) {
+      var i = tabs.indexOf(document.activeElement);
+      if (i < 0) return;
+      var n = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;
+      if (n === null) return;
+      e.preventDefault();
+      pick(tabs[(n + tabs.length) % tabs.length], true);
+    });
+    pick(tabs[0]);
   })();
 </script>
 <script src="/js/store.js"></script>

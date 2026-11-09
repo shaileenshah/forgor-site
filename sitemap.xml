@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://forgor.app/</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://forgor.app/privacy</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://forgor.app/</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://forgor.app/calendar/</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://forgor.app/tools/</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://forgor.app/privacy</loc><lastmod>2026-11-07</lastmod></url>
   <url><loc>https://forgor.app/delete-account/</loc><lastmod>2026-10-07</lastmod></url>
   <url><loc>https://forgor.app/quiz/</loc><lastmod>2026-10-09</lastmod></url>
   <url><loc>https://forgor.app/rip/</loc><lastmod>2026-10-07</lastmod></url>
